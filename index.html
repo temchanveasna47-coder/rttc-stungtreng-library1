@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យ - RTTC Stung Treng</title>
+    <title>ប្រព័ន្ធបណ្ណាល័យ និងស្នាដៃស្រាវជ្រាវ - RTTC Stung Treng</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -12,10 +12,10 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <div id="login-page" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-slate-900 to-blue-900 px-4">
+    <div id="login-page" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-900 px-4">
         <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full border border-slate-100">
-            <div class="text-center mb-8">
-                <div class="bg-indigo-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 border border-indigo-100">
+            <div class="text-center mb-6">
+                <div class="bg-indigo-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-3 border border-indigo-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
@@ -24,49 +24,107 @@
                 <p class="text-xs text-slate-500 mt-1">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</p>
             </div>
 
-            <form onsubmit="handleLogin(event)" class="space-y-5">
+            <form onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-slate-600 mb-1">ជ្រើសរើសតួនាទីប្រើប្រាស់</label>
-                    <select id="login-role" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 font-medium text-slate-700">
-                        <option value="គ្រូឧទ្ទេស"> គ្រូឧទ្ទេស (Teacher / Admin)</option>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">ជ្រើសរើសតួនាទី</label>
+                    <select id="login-role" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50 font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <option value="គ្រូបណ្ណារក្ស">🔑 គ្រូបណ្ណារក្ស (Librarian - មានសិទ្ធិបញ្ចូលសៀវភៅ)</option>
+                        <option value="គ្រូឧទ្ទេស">👨‍ង គ្រូឧទ្ទេស (Teacher)</option>
                         <option value="គរុសិស្ស">🧑‍🎓 គរុសិស្ស (Student)</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-600 mb-1">ឈ្មោះអ្នកប្រើប្រាស់ (Username)</label>
-                    <input type="text" id="login-username" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="វាយឈ្មោះគណនី...">
+                    <label class="block text-sm font-medium text-slate-600 mb-1">អ៊ីមែល ឬ លេខទូរស័ព្ទ</label>
+                    <input type="text" id="login-contact" required class="w-full px-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="ឧ. rttc@gmail.com ឬ 097xxxxxxx">
                 </div>
 
-                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition duration-200 transform hover:-translate-y-0.5">
-                    ចូលប្រើប្រាស់ប្រព័ន្ធ
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition duration-200">
+                    ចូលប្រើប្រាស់
                 </button>
             </form>
         </div>
     </div>
 
+    <div id="home-page" class="hidden min-h-screen flex flex-col">
+        <header class="bg-gradient-to-r from-slate-900 to-indigo-900 text-white px-6 py-4 shadow-md flex justify-between items-center">
+            <div>
+                <h1 class="text-lg font-bold">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសាន</h1>
+                <p class="text-xs text-indigo-200">ខេត្តស្ទឹងត្រែង</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-sm bg-indigo-800 px-3 py-1.5 rounded-lg border border-indigo-700" id="home-user-badge">អ្នកប្រើប្រាស់</span>
+                <button onclick="goToLibraryDashboard()" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2 rounded-xl shadow transition">
+                    📖 ចូលទៅកាន់បណ្ណាល័យ ➔
+                </button>
+            </div>
+        </header>
 
-    <div id="main-app" class="hidden">
+        <main class="flex-grow container mx-auto px-6 py-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">📊 បណ្តុំស្នាដៃស្រាវជ្រាវ និងគម្រោងនវានុវត្តន៍</h2>
+                <p class="text-sm text-slate-500">លទ្ធផលនៃការស្រាវជ្រាវគរុកោសល្យ និងគម្រោងបច្ចេកវិទ្យាអប់រំរបស់គរុសិស្សជំនាន់នីមួយៗ នៃភូមិភាគឦសាន</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <span class="bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-full font-semibold">🔍 ស្រាវជ្រាវគរុកោសល្យ</span>
+                        <h3 class="text-base font-bold text-slate-800 mt-3 mb-2 leading-snug">ការប្រើប្រាស់ហ្គេមអប់រំដើម្បីបង្កើនការចងចាំមេរៀនប្រវត្តិវិទ្យា ថ្នាក់ទី៧</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">ការសិក្សាស្រាវជ្រាវនេះផ្តោតទៅលើការបង្កើតល្បែងកម្សាន្តបែបអប់រំ ដើម្បីជួយឱ្យសិស្សានុសិស្សងាយយល់ និងចងចាំព្រឹត្តិការណ៍ប្រវត្តិសាស្ត្របានលឿនជាងការទន្ទេញចាំមាត់។</p>
+                    </div>
+                    <div class="border-t pt-4 mt-4 flex justify-between items-center text-xs text-slate-400">
+                        <span>ដោយ៖ គរុសិស្ស ក្រុមទី២ (ជំនាន់៤០)</span>
+                        <a href="#" class="text-indigo-600 font-bold hover:underline">ទាញយក PDF</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <span class="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-semibold">✨ នវានុវត្តន៍អប់រំ</span>
+                        <h3 class="text-base font-bold text-slate-800 mt-3 mb-2 leading-snug">ការអភិវឌ្ឍឧបករណ៍ពិសោធន៍រូបវិទ្យាតម្លៃថោកពីវត្ថុធាតុដើមក្នុងតំបន់</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">ការច្នៃប្រឌិតសម្ភារឧបទេសសម្រាប់ពិសោធន៍មេរៀនអគ្គិសនី និងមេកានិច ដោយប្រើប្រាស់ដបជ័រ និងវត្ថុដែលអាចកែច្នៃបាន ដើម្បីដោះស្រាយបញ្ហាខ្វះខាតសម្ភារនៅតាមសាលាបឋមសិក្សា។</p>
+                    </div>
+                    <div class="border-t pt-4 mt-4 flex justify-between items-center text-xs text-slate-400">
+                        <span>ដោយ៖ គរុសិស្ស ឯកទេសរូប-គីមី</span>
+                        <a href="#" class="text-indigo-600 font-bold hover:underline">ទាញយក PDF</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-semibold">📚 គម្រោងតែងនិពន្ធ</span>
+                        <h3 class="text-base font-bold text-slate-800 mt-3 mb-2 leading-snug">សៀវភៅលំហាត់ជំនួយស្មារតីគណិតវិទ្យាថ្នាក់ទី៤ សម្រាប់សិស្សរៀនយឺត</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">ការចងក្រងលំហាត់ពិសេសៗដែលមានរូបភាពពណ៌រស់រវើក និងគន្លឹះដោះស្រាយងាយៗ ក្នុងគោលបំណងលើកកម្ពស់សមត្ថភាពសិស្សដែលជួបការលំបាកក្នុងការគណនា។</p>
+                    </div>
+                    <div class="border-t pt-4 mt-4 flex justify-between items-center text-xs text-slate-400">
+                        <span>ដោយ៖ គរុសិស្ស បឋមសិក្សា (ក្រុមខ)</span>
+                        <a href="#" class="text-indigo-600 font-bold hover:underline">ទាញយក PDF</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="library-dashboard" class="hidden">
         <header class="bg-gradient-to-r to-blue-800 from-indigo-900 text-white shadow-md">
             <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-4">
-                    <div class="bg-white p-2 rounded-full shadow-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
+                    <button onclick="goToHomePage()" class="bg-indigo-800 hover:bg-indigo-700 text-white text-xs px-3 py-2 rounded-xl transition">
+                        🏠 ត្រឡប់ទៅទំព័រដើម
+                    </button>
                     <div>
-                        <h1 class="text-lg md:text-xl font-bold tracking-wide">ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យឌីជីថល</h1>
+                        <h1 class="text-base md:text-lg font-bold">ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យឌីជីថល</h1>
                         <p class="text-xs text-indigo-200">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</p>
                     </div>
                 </div>
                 
                 <div class="flex items-center gap-4">
                     <div class="text-right">
-                        <p class="text-sm font-semibold" id="user-display-name">ឈ្មោះអ្នកប្រើប្រាស់</p>
-                        <p class="text-xs text-indigo-300" id="user-display-role">តួនាទី</p>
+                        <p class="text-sm font-semibold" id="lib-user-name">ឈ្មោះ</p>
+                        <p class="text-xs text-indigo-300" id="lib-user-role">តួនាទី</p>
                     </div>
-                    <button onclick="handleLogout()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium px-3 py-2 rounded-xl shadow transition">
+                    <button onclick="handleLogout()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium px-3 py-2 rounded-xl transition">
                         🚪 ចាកចេញ
                     </button>
                 </div>
@@ -74,242 +132,188 @@
         </header>
 
         <main class="container mx-auto px-6 py-8">
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500 font-medium">សៀវភៅសរុប</p>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-1" id="total-books">១,២៤៥</h3>
-                    </div>
-                    <div class="bg-blue-50 p-3 rounded-xl text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
-                    </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div><p class="text-xs text-slate-500 font-medium">សៀវភៅសរុប</p><h3 class="text-2xl font-bold text-slate-800 mt-1" id="total-books">១,២៤៥</h3></div>
+                    <div class="bg-blue-50 p-3 rounded-xl text-blue-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg></div>
                 </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500 font-medium">កំពុងខ្ចី</p>
-                        <h3 class="text-3xl font-bold text-amber-600 mt-1" id="total-borrowed">២</h3>
-                    </div>
-                    <div class="bg-amber-50 p-3 rounded-xl text-amber-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div><p class="text-xs text-slate-500 font-medium">កំពុងខ្ចី</p><h3 class="text-2xl font-bold text-amber-600 mt-1" id="total-borrowed">២</h3></div>
+                    <div class="bg-amber-50 p-3 rounded-xl text-amber-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
                 </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500 font-medium">ហួសកាលកំណត់</p>
-                        <h3 class="text-3xl font-bold text-rose-600 mt-1" id="total-overdue">១</h3>
-                    </div>
-                    <div class="bg-rose-50 p-3 rounded-xl text-rose-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                    </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div><p class="text-xs text-slate-500 font-medium">ហួសកាលកំណត់</p><h3 class="text-2xl font-bold text-rose-600 mt-1" id="total-overdue">១</h3></div>
+                    <div class="bg-rose-50 p-3 rounded-xl text-rose-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg></div>
                 </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-slate-500 font-medium">គរុសិស្សសកម្ម</p>
-                        <h3 class="text-3xl font-bold text-emerald-600 mt-1">៣២០</h3>
-                    </div>
-                    <div class="bg-emerald-50 p-3 rounded-xl text-emerald-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div><p class="text-xs text-slate-500 font-medium">គរុសិស្សសកម្ម</p><h3 class="text-2xl font-bold text-emerald-600 mt-1">៣២០</h3></div>
+                    <div class="bg-emerald-50 p-3 rounded-xl text-emerald-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
                 </div>
             </div>
 
-            <div id="admin-tabs" class="mb-6 border-b border-slate-200">
+            <div id="librarian-tabs" class="mb-6 border-b border-slate-200">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
                     <li class="mr-2">
-                        <button id="btn-books-tab" class="inline-block p-4 border-b-2 border-indigo-600 text-indigo-600 rounded-t-lg active text-base font-semibold" onclick="switchTab('books-tab')">📚 បញ្ជីសៀវភៅ និងបញ្ចូលថ្មី</button>
+                        <button id="btn-books-tab" class="inline-block p-4 border-b-2 border-indigo-600 text-indigo-600 rounded-t-lg text-base font-semibold" onclick="switchTab('books-tab')">📚 បញ្ជីសៀវភៅ</button>
                     </li>
                     <li class="mr-2">
-                        <button id="btn-borrow-tab" class="inline-block p-4 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 rounded-t-lg text-base font-semibold" onclick="switchTab('borrow-tab')">🔄 ប្រព័ន្ធខ្ចី-សង និងការពិនិត្យពិន័យ</button>
+                        <button id="btn-borrow-tab" class="inline-block p-4 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 rounded-t-lg text-base font-semibold" onclick="switchTab('borrow-tab')">🔄 ប្រព័ន្ធខ្ចី-សង</button>
                     </li>
                 </ul>
             </div>
 
-            <div id="books-tab" class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div id="add-book-form-container" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
-                    <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
-                        <span class="p-1.5 bg-indigo-50 text-indigo-600 rounded-md">➕</span> បញ្ចូលសៀវភៅថ្មី
-                    </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div id="add-book-section" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
+                    <h2 class="text-base font-bold text-slate-800 mb-4 border-b pb-2">➕ បញ្ចូលសៀវភៅថ្មី (សិទ្ធិបណ្ណារក្ស)</h2>
                     <form id="book-form" onsubmit="addBook(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">ចំណងជើងសៀវភៅ</label>
-                            <input type="text" id="book-title" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. វិធីសាស្ត្របង្រៀនភាសាខ្មែរ">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">ប្រភេទកាត់</label>
-                            <select id="book-category" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                                <option value="គរុកោសល្យ">គរុកោសល្យ (Pedagogy)</option>
-                                <option value="គណិតវិទ្យា">គណិតវិទ្យា</option>
-                                <option value="អក្សរសិល្ប៍">អក្សរសិល្ប៍ និងភាសា</option>
-                                <option value="វិទ្យាសាស្ត្រ">វិទ្យាសាស្ត្រអនុវត្ត</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">អ្នកនិពន្ធ / ចងក្រង</label>
-                            <input type="text" id="book-author" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. ក្រសួងអប់រំ">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">ចំនួនសរុប (ក្បាល)</label>
-                            <input type="number" id="book-qty" min="1" value="5" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                        </div>
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded-xl shadow-sm transition duration-200">រក្សាទុកសៀវភៅ</button>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">ចំណងជើងសៀវភៅ</label><input type="text" id="book-title" required class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none focus:ring-2 focus:ring-indigo-500"></div>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">ប្រភេទ</label><select id="book-category" class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"><option value="គរុកោសល្យ">គរុកោសល្យ</option><option value="គណិតវិទ្យា">គណិតវិទ្យា</option><option value="អក្សរសិល្ប៍">អក្សរសិល្ប៍</option><option value="វិទ្យាសាស្ត្រ">វិទ្យាសាស្ត្រ</option></select></div>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">អ្នកនិពន្ធ</label><input type="text" id="book-author" required class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"></div>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">ចំនួន (ក្បាល)</label><input type="number" id="book-qty" min="1" value="5" required class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"></div>
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-xl text-sm transition">រក្សាទុក</button>
                     </form>
                 </div>
 
-                <div id="book-list-container" class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div id="catalog-section" class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                            <span class="p-1.5 bg-blue-50 text-blue-600 rounded-md">📖</span> កាតាឡុកសៀវភៅក្នុងបណ្ណាល័យ
-                        </h2>
-                        <input type="text" id="search-book" oninput="filterBooks()" placeholder="🔍 ស្វែងរកសៀវភៅ..." class="w-full sm:w-64 px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm bg-slate-50">
+                        <h2 class="text-base font-bold text-slate-800">📖 កាតាឡុកសៀវភៅក្នុងបណ្ណាល័យ</h2>
+                        <input type="text" id="search-book" oninput="filterBooks()" placeholder="🔍 ស្វែងរកសៀវភៅ..." class="w-full sm:w-64 px-4 py-2 border rounded-xl text-xs bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
                     </div>
-                    
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-slate-100 text-slate-400 text-sm font-medium">
-                                    <th class="pb-3 text-center w-12">ល.រ</th>
-                                    <th class="pb-3">ចំណងជើង</th>
-                                    <th class="pb-3">ប្រភេទ</th>
-                                    <th class="pb-3">អ្នកនិពន្ធ</th>
-                                    <th class="pb-3 text-center">ចំនួននៅសល់</th>
-                                </tr>
-                            </thead>
-                            <tbody id="book-list-table" class="divide-y divide-slate-50 text-sm text-slate-700">
-                                </tbody>
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead><tr class="border-b text-slate-400 font-medium"><th class="pb-3 text-center w-12">ល.រ</th><th class="pb-3">ចំណងជើង</th><th class="pb-3">ប្រភេទ</th><th class="pb-3">អ្នកនិពន្ធ</th><th class="pb-3 text-center">នៅសល់</th></tr></thead>
+                            <tbody id="book-list-table" class="divide-y divide-slate-50 text-slate-700"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div id="borrow-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
-                    <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
-                        <span class="p-1.5 bg-amber-50 text-amber-600 rounded-md">📝</span> កត់ត្រាការខ្ចីសៀវភៅ
-                    </h2>
+            <div id="borrow-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+                <div id="record-borrow-form-container" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
+                    <h2 class="text-base font-bold text-slate-800 mb-4 border-b pb-2">📝 កត់ត្រាការខ្ចី (សិទ្ធិបណ្ណារក្ស)</h2>
                     <form id="borrow-form" onsubmit="recordBorrow(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">ឈ្មោះគរុសិស្ស / គ្រូ</label>
-                            <input type="text" id="borrower-name" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. ច័ន្ទ វាសនា">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">ជ្រើសរើសសៀវភៅ</label>
-                            <select id="borrow-book-select" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                                </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">រយៈពេលខ្ចី (ថ្ងៃ)</label>
-                            <select id="borrow-duration" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                                <option value="7">៧ ថ្ងៃ (Line ១ សប្តាហ៍)</option>
-                                <option value="14" selected>១៤ ថ្ងៃ (២ សប្តាហ៍)</option>
-                                <option value="30">៣០ ថ្ងៃ (១ ខែ)</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2.5 px-4 rounded-xl shadow-sm transition duration-200">បញ្ជាក់ការខ្ចី</button>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">ឈ្មោះអ្នកខ្ចី</label><input type="text" id="borrower-name" required class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"></div>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">ជ្រើសរើសសៀវភៅ</label><select id="borrow-book-select" class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"></select></div>
+                        <div><label class="block text-xs font-medium text-slate-600 mb-1">រយៈពេល (ថ្ងៃ)</label><select id="borrow-duration" class="w-full px-4 py-2 border rounded-xl bg-slate-50 text-sm outline-none"><option value="14">១៤ ថ្ងៃ</option><option value="30">៣០ ថ្ងៃ</option></select></div>
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 rounded-xl text-sm transition">បញ្ជាក់ការខ្ចី</button>
                     </form>
                 </div>
-
-                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <span class="p-1.5 bg-purple-50 text-purple-600 rounded-md">📋</span> បញ្ជីតាមដានការខ្ចី-សងសៀវភៅ
-                    </h2>
+                <div id="borrow-list-container" class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 class="text-base font-bold text-slate-800 mb-6">📋 បញ្ជីតាមដានការខ្ចី-សងសៀវភៅ</h2>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-slate-100 text-slate-400 text-sm font-medium">
-                                    <th class="pb-3">អ្នកខ្ចី</th>
-                                    <th class="pb-3">សៀវភៅ</th>
-                                    <th class="pb-3">ថ្ងៃត្រូវសង</th>
-                                    <th class="pb-3">ស្ថានភាព / ប្រាក់ពិន័យ</th>
-                                    <th class="pb-3 text-center">សកម្មភាព</th>
-                                </tr>
-                            </thead>
-                            <tbody id="borrow-list-table" class="divide-y divide-slate-50 text-sm text-slate-700">
-                                </tbody>
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead><tr class="border-b text-slate-400"><th class="pb-3">អ្នកខ្ចី</th><th class="pb-3">សៀវភៅ</th><th class="pb-3">ថ្ងៃត្រូវសង</th><th class="pb-3">ស្ថានភាព / ពិន័យ</th><th class="pb-3 text-center">សកម្មភាព</th></tr></thead>
+                            <tbody id="borrow-list-table" class="divide-y text-slate-700"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
 
     <script>
-        let currentRole = ""; // រក្សាទុកតួនាទីបច្ចុប្បន្ន
+        let currentRole = "";
 
-        // ទិន្នន័យសៀវភៅគំរូ
         let books = [
-            { id: 1, title: "វិធីសាស្ត្របង្រៀនគណិតវិទ្យាថ្នាក់បឋម", category: "គរុកោសល្យ", author: "នាយកដ្ឋានបណ្តុះបណ្តាល", qty: 12 },
-            { id: 2, title: "អក្សរសិល្ប៍ខ្មែរ និងវប្បធម៌ទូទៅ", category: "អក្សរសិល្ប៍", author: "សាស្រ្តាចារ្យ ក្រុមជំនុំ", qty: 4 },
-            { id: 3, title: "រូបវិទ្យាអនុវត្តជំនាន់ថ្មី", category: "វិទ្យាសាស្ត្រ", author: "ក្រសួងអប់រំ", qty: 8 },
-            { id: 4, title: "ចិត្តវិទ្យាគរុកោសល្យ និងការគ្រប់គ្រងថ្នាក់", category: "គរុកោសល្យ", author: "គណៈកម្មការជំនាញ", qty: 15 }
+            { id: 1, title: "វិធីសាស្ត្របង្រៀនគណិតវិទ្យាថ្នាក់បឋម", category: "គរុកោសល្យ", author: "នាយកដ្ឋានបណ្តុះបណ្តាល", qty: 10 },
+            { id: 2, title: "អក្សរសិល្ប៍ខ្មែរ និងវប្បធម៌ទូទៅ", category: "អក្សរសិល្ប៍", author: "សាស្រ្តាចារ្យ ក្រុមជំនុំ", qty: 5 },
+            { id: 3, title: "ចិត្តវិទ្យាគរុកោសល្យ", category: "គរុកោសល្យ", author: "គណៈកម្មការជំនាញ", qty: 8 }
         ];
 
-        // ទិន្នន័យអ្នកខ្ចីគំរូ
         let borrowRecords = [
-            { id: 101, borrower: "សុខ ភារម្យ", bookId: 2, dueDate: "2026-05-15", status: "Borrowed" },
-            { id: 102, borrower: "ចាន់ ធីតា", bookId: 1, dueDate: "2026-06-02", status: "Borrowed" }
+            { id: 201, borrower: "សុខ ភារម្យ", bookId: 2, dueDate: "2026-05-15", status: "Borrowed" }
         ];
 
-        // មុខងារពេលចុច LOGIN
+        // មុខងារ Login 
         function handleLogin(e) {
             e.preventDefault();
             const role = document.getElementById('login-role').value;
-            const username = document.getElementById('login-username').value;
+            const contact = document.getElementById('login-contact').value;
 
             currentRole = role;
 
-            // បង្ហាញឈ្មោះ និងតួនាទីនៅលើ Header
-            document.getElementById('user-display-name').innerText = username;
-            document.getElementById('user-display-role').innerText = "តួនាទី៖ " + role;
+            // កំណត់ការបង្ហាញឈ្មោះលើទំព័រ
+            document.getElementById('home-user-badge').innerText = `${role}៖ ${contact}`;
+            document.getElementById('lib-user-name').innerText = contact;
+            document.getElementById('lib-user-role').innerText = role;
 
-            // លាក់ផ្ទាំង Login និងបើកផ្ទាំង App ចម្បង
+            // ផ្លាស់ប្តូរទំព័រទៅកាន់ "ទំព័រដើម (Home)" មុនគេបង្អស់
             document.getElementById('login-page').classList.add('hidden');
-            document.getElementById('main-app').classList.remove('hidden');
+            document.getElementById('home-page').classList.remove('hidden');
 
-            // បែងចែកសិទ្ធិប្រើប្រាស់តាមតួនាទី (Role-Based Authorization)
-            if (role === "គរុសិស្ស") {
-                // ប្រសិនបើជាគរុសិស្ស៖ លាក់ទម្រង់បញ្ចូលសៀវភៅ, លាក់របារ Tab គ្រូ, បង្ហាញតែកាតាឡុកពេញអេក្រង់
-                document.getElementById('add-book-form-container').classList.add('hidden');
-                document.getElementById('book-list-container').classList.remove('lg:col-span-2');
-                document.getElementById('book-list-container').classList.add('lg:col-span-3');
-                document.getElementById('admin-tabs').classList.add('hidden');
+            setupRolePermissions();
+        }
+
+        // រៀបចំសិទ្ធិប្រើប្រាស់តាមតួនាទី
+        function setupRolePermissions() {
+            // កំណត់ទម្រង់ Default ឡើងវិញ
+            document.getElementById('add-book-section').classList.remove('hidden');
+            document.getElementById('catalog-section').classList.remove('lg:col-span-3');
+            document.getElementById('catalog-section').classList.add('lg:col-span-2');
+            document.getElementById('librarian-tabs').classList.remove('hidden');
+            document.getElementById('record-borrow-form-container').classList.remove('hidden');
+            document.getElementById('borrow-list-container').classList.remove('lg:col-span-3');
+            document.getElementById('borrow-list-container').classList.add('lg:col-span-2');
+
+            if (currentRole === "គរុសិស្ស") {
+                // សិស្ស៖ មើលបានតែកាតាឡុកសៀវភៅប៉ុណ្ណោះ លាក់ផ្នែកបញ្ចូល និងផ្នែកខ្ចីសងទាំងអស់
+                document.getElementById('add-book-section').classList.add('hidden');
+                document.getElementById('catalog-section').classList.remove('lg:col-span-2');
+                document.getElementById('catalog-section').classList.add('lg:col-span-3');
+                document.getElementById('librarian-tabs').classList.add('hidden');
+                document.getElementById('borrow-tab').classList.add('hidden');
+                switchTab('books-tab');
+            } else if (currentRole === "គ្រូឧទ្ទេស") {
+                // គ្រូឧទ្ទេស៖ មើលបានទាំងបញ្ជីសៀវភៅ និងបញ្ជីខ្ចីសង ប៉ុន្តែលាក់ប៊ូតុងបញ្ចូល/កែប្រែទិន្នន័យ
+                document.getElementById('add-book-section').classList.add('hidden');
+                document.getElementById('catalog-section').classList.remove('lg:col-span-2');
+                document.getElementById('catalog-section').classList.add('lg:col-span-3');
+                document.getElementById('librarian-tabs').classList.remove('hidden');
+                
+                document.getElementById('record-borrow-form-container').classList.add('hidden');
+                document.getElementById('borrow-list-container').classList.remove('lg:col-span-2');
+                document.getElementById('borrow-list-container').classList.add('lg:col-span-3');
                 switchTab('books-tab');
             } else {
-                // ប្រសិនបើជាគ្រូឧទ្ទេស៖ បង្ហាញមុខងារទាំងអស់ឡើងវិញ
-                document.getElementById('add-book-form-container').classList.remove('hidden');
-                document.getElementById('book-list-container').classList.remove('lg:col-span-3');
-                document.getElementById('book-list-container').classList.add('lg:col-span-2');
-                document.getElementById('admin-tabs').classList.remove('hidden');
+                // គ្រូបណ្ណារក្ស៖ មានសិទ្ធិគ្រប់យ៉ាងទាំងអស់
+                switchTab('books-tab');
             }
 
-            // Render ទិន្នន័យឡើងវិញ
             renderBooks();
             renderBorrowRecords();
         }
 
-        // មុខងារ Logout
-        function handleLogout() {
-            document.getElementById('login-username').value = "";
-            document.getElementById('main-app').classList.add('hidden');
-            document.getElementById('login-page').classList.remove('hidden');
+        // មុខងាររុករកទំព័រ (Navigation)
+        function goToLibraryDashboard() {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('library-dashboard').classList.remove('hidden');
         }
 
-        // មុខងារប្តូរផ្ទាំង Tabs (សម្រាប់តែគ្រូឧទ្ទេស)
+        function goToHomePage() {
+            document.getElementById('library-dashboard').classList.add('hidden');
+            document.getElementById('home-page').classList.remove('hidden');
+        }
+
+        function handleLogout() {
+            document.getElementById('main-app').classList.add('hidden'); // បិទបើកទំព័រ
+            document.getElementById('library-dashboard').classList.add('hidden');
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('login-page').classList.remove('hidden');
+            document.getElementById('login-contact').value = "";
+        }
+
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-            
             const btnBooks = document.getElementById('btn-books-tab');
             const btnBorrow = document.getElementById('btn-borrow-tab');
             
             if(tabId === 'books-tab') {
+                document.getElementById('catalog-section').parentElement.classList.remove('hidden');
+                document.getElementById('borrow-tab').classList.add('hidden');
                 btnBooks.classList.add('border-indigo-600', 'text-indigo-600');
                 btnBorrow.classList.remove('border-indigo-600', 'text-indigo-600');
             } else {
+                document.getElementById('catalog-section').parentElement.classList.add('hidden');
+                document.getElementById('borrow-tab').classList.remove('hidden');
                 btnBorrow.classList.add('border-indigo-600', 'text-indigo-600');
                 btnBooks.classList.remove('border-indigo-600', 'text-indigo-600');
             }
@@ -319,67 +323,58 @@
         function renderBooks() {
             const tableBody = document.getElementById('book-list-table');
             const selectDropdown = document.getElementById('borrow-book-select');
-            
-            tableBody.innerHTML = '';
-            selectDropdown.innerHTML = '';
+            tableBody.innerHTML = ''; selectDropdown.innerHTML = '';
 
             books.forEach((book, index) => {
                 const borrowedCount = borrowRecords.filter(r => r.bookId === book.id && r.status === "Borrowed").length;
                 const remaining = book.qty - borrowedCount;
 
                 const qtyBadge = remaining > 0 
-                    ? `<span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">${remaining} ក្បាល</span>`
-                    : `<span class="bg-rose-50 text-rose-700 px-3 py-1 rounded-full text-xs font-semibold">អស់ពីស្តុក</span>`;
+                    ? `<span class="bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-semibold">${remaining} ក្បាល</span>`
+                    : `<span class="bg-rose-50 text-rose-700 px-2.5 py-0.5 rounded-full font-semibold">អស់</span>`;
 
                 tableBody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="py-4 text-center text-slate-400 font-medium">${index + 1}</td>
-                        <td class="py-4 font-semibold text-slate-800">${book.title}</td>
-                        <td class="py-4"><span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-medium">${book.category}</span></td>
-                        <td class="py-4 text-slate-500">${book.author}</td>
-                        <td class="py-4 text-center">${qtyBadge}</td>
-                    </tr>
-                `;
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 text-center text-slate-400">${index + 1}</td>
+                        <td class="py-3 font-semibold text-slate-800">${book.title}</td>
+                        <td class="py-3"><span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs">${book.category}</span></td>
+                        <td class="py-3 text-slate-500">${book.author}</td>
+                        <td class="py-3 text-center">${qtyBadge}</td>
+                    </tr>`;
 
                 if (remaining > 0) {
-                    selectDropdown.innerHTML += `<option value="${book.id}">${book.title} (${remaining})</option>`;
+                    selectDropdown.innerHTML += `<option value="${book.id}">${book.title}</option>`;
                 }
             });
-
-            const totalQty = books.reduce((sum, b) => sum + b.qty, 0);
-            document.getElementById('total-books').innerText = totalQty.toLocaleString('km-KH');
+            document.getElementById('total-books').innerText = books.reduce((sum, b) => sum + b.qty, 0);
         }
 
-        // ស្វែងរកសៀវភៅ
         function filterBooks() {
             const query = document.getElementById('search-book').value.toLowerCase();
             const rows = document.querySelectorAll('#book-list-table tr');
             rows.forEach(row => {
-                const title = row.cells[1].innerText.toLowerCase();
-                if (title.includes(query)) row.style.display = '';
+                if (row.cells[1].innerText.toLowerCase().includes(query)) row.style.display = '';
                 else row.style.display = 'none';
             });
         }
 
-        // បន្ថែមសៀវភៅថ្មី
         function addBook(e) {
             e.preventDefault();
-            const title = document.getElementById('book-title').value;
-            const category = document.getElementById('book-category').value;
-            const author = document.getElementById('book-author').value;
-            const qty = parseInt(document.getElementById('book-qty').value);
-
-            books.push({ id: Date.now(), title, category, author, qty });
-            renderBooks();
-            document.getElementById('book-form').reset();
-            alert("📚 បានរក្សាទុកសៀវភៅថ្មីរួចរាល់!");
+            books.push({
+                id: Date.now(),
+                title: document.getElementById('book-title').value,
+                category: document.getElementById('book-category').value,
+                author: document.getElementById('book-author').value,
+                qty: parseInt(document.getElementById('book-qty').value)
+            });
+            renderBooks(); document.getElementById('book-form').reset();
+            alert("📚 បានបញ្ចូលសៀវភៅថ្មីជោគជ័យ!");
         }
 
-        // បង្ហាញបញ្ជីខ្ចី-សង
+        // បង្ហាញបញ្ជីខ្ចីសង
         function renderBorrowRecords() {
             const tableBody = document.getElementById('borrow-list-table');
-            tableBody.innerHTML = '';
-            let activeBorrows = 0; let overdueCount = 0;
+            tableBody.innerHTML = ''; let activeBorrows = 0; let overdueCount = 0;
             const today = new Date();
 
             borrowRecords.forEach(record => {
@@ -388,501 +383,58 @@
                 const dueDate = new Date(record.dueDate);
                 let statusBadge = ''; let fineText = '០ រៀល';
 
-                const formattedDate = dueDate.toLocaleDateString('km-KH', { year: 'numeric', month: 'long', day: 'numeric' });
-
                 if (record.status === "Returned") {
-                    statusBadge = `<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-medium">📋 បានសងរួច</span>`;
+                    statusBadge = `<span class="bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">សងរួច</span>`;
                 } else if (today > dueDate) {
                     const diffDays = Math.ceil(Math.abs(today - dueDate) / (1000 * 60 * 60 * 24));
-                    const fine = diffDays * 500;
                     overdueCount++;
-                    statusBadge = `<span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-semibold">⚠️ ហួស ${diffDays} ថ្ងៃ</span>`;
-                    fineText = `<span class="text-rose-600 font-bold">${fine.toLocaleString('km-KH')} រៀល</span>`;
+                    statusBadge = `<span class="bg-rose-50 text-rose-600 px-2 py-0.5 rounded-full font-semibold">ហួស ${diffDays} ថ្ងៃ</span>`;
+                    fineText = `<span class="text-rose-600 font-bold">${(diffDays * 500).toLocaleString()} រៀល</span>`;
                 } else {
-                    statusBadge = `<span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-xs font-medium">⏳ កំពុងខ្ចី</span>`;
+                    statusBadge = `<span class="bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">កំពុងខ្ចី</span>`;
                 }
 
-                const actionBtn = record.status === "Borrowed" 
-                    ? `<button onclick="returnBook(${record.id})" class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-lg shadow-sm transition">🔄 សង</button>`
-                    : `<span class="text-xs text-slate-400">រួចរាល់</span>`;
+                // បើជាគ្រូឧទ្ទេស មិនឱ្យឃើញប៊ូតុងសងសៀវភៅទេ (លាក់ប៊ូតុងសកម្មភាព)
+                const actionBtn = (currentRole === "គ្រូបណ្ណារក្ស" && record.status === "Borrowed")
+                    ? `<button onclick="returnBook(${record.id})" class="bg-emerald-500 text-white px-2 py-1 rounded hover:bg-emerald-600">សង</button>`
+                    : `<span class="text-slate-400">-</span>`;
 
                 tableBody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="py-4 font-medium text-slate-800">${record.borrower}</td>
-                        <td class="py-4 text-slate-600">${book ? book.title : 'មិនស្គាល់'}</td>
-                        <td class="py-4 text-slate-500 text-xs">${formattedDate}</td>
-                        <td class="py-4">${statusBadge} <br> <span class="text-xs text-slate-400">ពិន័យ: </span>${fineText}</td>
-                        <td class="py-4 text-center">${actionBtn}</td>
-                    </tr>
-                `;
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 font-medium">${record.borrower}</td>
+                        <td class="py-3">${book ? book.title : 'មិនស្គាល់'}</td>
+                        <td class="py-3 text-slate-500">${dueDate.toLocaleDateString('km-KH')}</td>
+                        <td class="py-3">${statusBadge} <br><span class="text-[10px] text-slate-400">ពិន័យ: ${fineText}</span></td>
+                        <td class="py-3 text-center">${actionBtn}</td>
+                    </tr>`;
             });
-
             document.getElementById('total-borrowed').innerText = activeBorrows;
             document.getElementById('total-overdue').innerText = overdueCount;
         }
 
-        // កត់ត្រាការខ្ចី
         function recordBorrow(e) {
             e.preventDefault();
-            const borrower = document.getElementById('borrower-name').value;
-            const bookId = parseInt(document.getElementById('borrow-book-select').value);
             const duration = parseInt(document.getElementById('borrow-duration').value);
-
-            const dueDate = new Date();
-            dueDate.setDate(dueDate.getDate() + duration);
+            const dueDate = new Date(); dueDate.setDate(dueDate.getDate() + duration);
 
             borrowRecords.unshift({
-                id: Date.now(), borrower, bookId, dueDate: dueDate.toISOString().split('T')[0], status: "Borrowed"
+                id: Date.now(),
+                borrower: document.getElementById('borrower-name').value,
+                bookId: parseInt(document.getElementById('borrow-book-select').value),
+                dueDate: dueDate.toISOString().split('T')[0],
+                status: "Borrowed"
             });
-            
-            renderBooks(); renderBorrowRecords();
-            document.getElementById('borrow-form').reset();
+            renderBooks(); renderBorrowRecords(); document.getElementById('borrow-form').reset();
             alert("📝 កត់ត្រាការខ្ចីរួចរាល់!");
         }
 
-        // សងសៀវភៅ
-        function returnBook(recordId) {
-            const record = borrowRecords.find(r => r.id === recordId);
-            if (record && confirm("តើពិតជាចង់បញ្ជាក់ការសងសៀវភៅមែនទេ?")) {
+        function returnBook(id) {
+            const record = borrowRecords.find(r => r.id === id);
+            if (record && confirm("តើពិតជាចង់បញ្ជាក់ការសងមែនទេ?")) {
                 record.status = "Returned";
                 renderBooks(); renderBorrowRecords();
-                alert("✅ បានសងសៀវភៅចូលស្តុកវិញរួចរាល់!");
             }
         }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="km">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យ - RTTC Stung Treng</title>
-    <!-- Tailwind CSS សម្រាប់រចនាឱ្យស្អាត និងទាន់សម័យ -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts សម្រាប់អក្សរខ្មែរ -->
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Kantumruy Pro', sans-serif;
-        }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
-
-    <!-- របារខាងលើ (Header) -->
-    <header class="bg-gradient-to-r line to-blue-800 from-indigo-900 text-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-4">
-                <div class="bg-white p-2 rounded-full shadow-md">
-                    <!-- រូបតំណាងបណ្ណាល័យ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold tracking-wide">ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យឌីជីថល</h1>
-                    <p class="text-xs md:text-sm text-indigo-200">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</p>
-                </div>
-            </div>
-            <div class="text-sm bg-indigo-800 bg-opacity-50 px-4 py-2 rounded-lg border border-indigo-700">
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-6 py-8">
-        
-        <!-- ផ្នែករបាយការណ៍សង្ខេប (Dashboard Overview) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">សៀវភៅសរុប</p>
-                    <h3 class="text-3xl font-bold text-slate-800 mt-1" id="total-books">១,២៤៥</h3>
-                </div>
-                <div class="bg-blue-50 p-3 rounded-xl text-blue-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">កំពុងខ្ចី</p>
-                    <h3 class="text-3xl font-bold text-amber-600 mt-1" id="total-borrowed">២</h3>
-                </div>
-                <div class="bg-amber-50 p-3 rounded-xl text-amber-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">ហួសកាលកំណត់ (ពិន័យ)</p>
-                    <h3 class="text-3xl font-bold text-rose-600 mt-1" id="total-overdue">១</h3>
-                </div>
-                <div class="bg-rose-50 p-3 rounded-xl text-rose-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">គរុសិស្សសកម្ម</p>
-                    <h3 class="text-3xl font-bold text-emerald-600 mt-1">៣២០</h3>
-                </div>
-                <div class="bg-emerald-50 p-3 rounded-xl text-emerald-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- ផ្នែកស្នូល៖ បែងចែកជា ២ ផ្ទាំង (Tabs) -->
-        <div class="mb-6 border-b border-slate-200">
-            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="tab-headers">
-                <li class="mr-2">
-                    <button class="inline-block p-4 border-b-2 border-indigo-600 text-indigo-600 rounded-t-lg active text-base font-semibold" onclick="switchTab('books-tab')">📚 បញ្ជីសៀវភៅ និងបញ្ចូលថ្មី</button>
-                </li>
-                <li class="mr-2">
-                    <button class="inline-block p-4 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 rounded-t-lg text-base font-semibold" onclick="switchTab('borrow-tab')">🔄 ប្រព័ន្ធខ្ចី-សង និងការពិនិត្យពិន័យ</button>
-                </li>
-            </ul>
-        </div>
-
-        <!-- TAB 1: គ្រប់គ្រងសៀវភៅ -->
-        <div id="books-tab" class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- ទម្រង់បញ្ចូលសៀវភៅថ្មី -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
-                <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
-                    <span class="p-1.5 bg-indigo-50 text-indigo-600 rounded-md">➕</span> បញ្ចូលសៀវភៅថ្មី
-                </h2>
-                <form id="book-form" onsubmit="addBook(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">ចំណងជើងសៀវភៅ</label>
-                        <input type="text" id="book-title" required class="w-full px-4 py-2 border.5 border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. វិធីសាស្ត្របង្រៀនភាសាខ្មែរ">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">ប្រភេទកាត់</label>
-                        <select id="book-category" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                            <option value="គរុកោសល្យ">គរុកោសល្យ (Pedagogy)</option>
-                            <option value="គណិតវិទ្យា">គណិតវិទ្យា</option>
-                            <option value="អក្សរសិល្ប៍">អក្សរសិល្ប៍ និងភាសា</option>
-                            <option value="វិទ្យាសាស្ត្រ">វិទ្យាសាស្ត្រអនុវត្ត</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">អ្នកនិពន្ធ / ចងក្រង</label>
-                        <input type="text" id="book-author" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. ក្រសួងអប់រំ">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">ចំនួនសរុប (ក្បាល)</label>
-                        <input type="number" id="book-qty" min="1" value="5" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                    </div>
-                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded-xl shadow-sm transition duration-200">រក្សាទុកសៀវភៅ</button>
-                </form>
-            </div>
-
-            <!-- បញ្ជីបង្ហាញសៀវភៅ -->
-            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                    <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        <span class="p-1.5 bg-blue-50 text-blue-600 rounded-md">📖</span> កាតាឡុកសៀវភៅក្នុងបណ្ណាល័យ
-                    </h2>
-                    <input type="text" id="search-book" oninput="filterBooks()" placeholder="🔍 ស្វែងរកសៀវភៅ..." class="w-full sm:w-64 px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm bg-slate-50">
-                </div>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-slate-100 text-slate-400 text-sm font-medium">
-                                <th class="pb-3 text-center w-12">ល.រ</th>
-                                <th class="pb-3">ចំណងជើង</th>
-                                <th class="pb-3">ប្រភេទ</th>
-                                <th class="pb-3">អ្នកនិពន្ធ</th>
-                                <th class="pb-3 text-center">ចំនួននៅសល់</th>
-                            </tr>
-                        </thead>
-                        <tbody id="book-list-table" class="divide-y divide-slate-50 text-sm text-slate-700">
-                            <!-- ទិន្នន័យបញ្ចូលដោយ JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: ប្រព័ន្ធខ្ចី-សង និងពិន័យ -->
-        <div id="borrow-tab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- ទម្រង់កត់ត្រាការខ្ចីសៀវភៅ -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
-                <h2 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
-                    <span class="p-1.5 bg-amber-50 text-amber-600 rounded-md">📝</span> កត់ត្រាការខ្ចីសៀវភៅ
-                </h2>
-                <form id="borrow-form" onsubmit="recordBorrow(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">ឈ្មោះគរុសិស្ស / គ្រូ</label>
-                        <input type="text" id="borrower-name" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="ឧ. ច័ន្ទ វាសនា">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">ជ្រើសរើសសៀវភៅ</label>
-                        <select id="borrow-book-select" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                            <!-- ជម្រើសសៀវភៅនឹងបង្ហាញតាម JavaScript -->
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-1">រយៈពេលខ្ចី (ថ្ងៃ)</label>
-                        <select id="borrow-duration" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50">
-                            <option value="7">៧ ថ្ងៃ (១ សប្តាហ៍)</option>
-                            <option value="14" selected>១៤ ថ្ងៃ (២ សប្តាហ៍)</option>
-                            <option value="30">៣០ ថ្ងៃ (១ ខែ)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2.5 px-4 rounded-xl shadow-sm transition duration-200">បញ្ជាក់ការខ្ចី</button>
-                </form>
-                <div class="mt-4 p-3 bg-blue-50 text-blue-800 rounded-xl text-xs leading-relaxed">
-                    ℹ️ <strong>លក្ខខណ្ឌពិន័យ៖</strong> ប្រសិនបើហួសកាលកំណត់សង នឹងត្រូវពិន័យជាប្រាក់ចំនួន <strong>៥០០ រៀល ក្នុងមួយថ្ងៃ</strong>។
-                </div>
-            </div>
-
-            <!-- បញ្ជីគរុសិស្សដែលកំពុងខ្ចីសៀវភៅ -->
-            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                    <span class="p-1.5 bg-purple-50 text-purple-600 rounded-md">📋</span> បញ្ជីតាមដានការខ្ចី-សងសៀវភៅ
-                </h2>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-slate-100 text-slate-400 text-sm font-medium">
-                                <th class="pb-3">អ្នកខ្ចី</th>
-                                <th class="pb-3">សៀវភៅ</th>
-                                <th class="pb-3">ថ្ងៃត្រូវសង</th>
-                                <th class="pb-3">ស្ថានភាព / ប្រាក់ពិន័យ</th>
-                                <th class="pb-3 text-center">សកម្មភាព</th>
-                            </tr>
-                        </thead>
-                        <tbody id="borrow-list-table" class="divide-y divide-slate-50 text-sm text-slate-700">
-                            <!-- ទិន្នន័យបង្ហាញតាម JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- JavaScript សម្រាប់ដំណើរការកម្មវិធី -->
-    <script>
-        // ទិន្នន័យគំរូសៀវភៅ (Mock Data)
-        let books = [
-            { id: 1, title: "វិធីសាស្ត្របង្រៀនគណិតវិទ្យាថ្នាក់បឋម", category: "គរុកោសល្យ", author: "នាយកដ្ឋានបណ្តុះបណ្តាល", qty: 12 },
-            { id: 2, title: "អក្សរសិល្ប៍ខ្មែរ និងវប្បធម៌ទូទៅ", category: "អក្សរសិល្ប៍", author: "សាស្រ្តាចារ្យ ក្រុមជំនុំ", qty: 4 },
-            { id: 3, title: "រូបវិទ្យាអនុវត្តជំនាន់ថ្មី", category: "វិទ្យាសាស្ត្រ", author: "ក្រសួងអប់រំ", qty: 8 },
-            { id: 4, title: "ចិត្តវិទ្យាគរុកោសល្យ និងការគ្រប់គ្រងថ្នាក់", category: "គរុកោសល្យ", author: "គណៈកម្មការជំនាញ", qty: 15 }
-        ];
-
-        // ទិន្នន័យគំរូអ្នកខ្ចី (Borrowing Data) 
-        // កំណត់ថ្ងៃខ្លះឱ្យហួសកំណត់ ដើម្បីបង្ហាញប្រព័ន្ធគណនាប្រាក់ពិន័យ (Fine)
-        let borrowRecords = [
-            { id: 101, borrower: "សុខ ភារម្យ", bookId: 2, dueDate: "2026-05-15", status: "Borrowed" }, // ហួសកំណត់
-            { id: 102, borrower: "ចាន់ ធីតា", bookId: 1, dueDate: "2026-06-02", status: "Borrowed" }  // នៅមានពេល
-        ];
-
-        // មុខងារប្តូរផ្ទាំង (Tab Navigation)
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-            
-            // ប្តូររចនាបថប៊ូតុង Tab
-            const tabs = document.querySelectorAll('#tab-headers button');
-            tabs.forEach(tab => {
-                tab.classList.remove('border-indigo-600', 'text-indigo-600');
-                tab.classList.add('border-transparent', 'text-slate-500');
-            });
-            event.currentTarget.classList.add('border-indigo-600', 'text-indigo-600');
-            event.currentTarget.classList.remove('border-transparent', 'text-slate-500');
-        }
-
-        // បង្ហាញបញ្ជីសៀវភៅទៅក្នុងតារាង
-        function renderBooks() {
-            const tableBody = document.getElementById('book-list-table');
-            const selectDropdown = document.getElementById('borrow-book-select');
-            
-            tableBody.innerHTML = '';
-            selectDropdown.innerHTML = '';
-
-            books.forEach((book, index) => {
-                // គណនាចំនួននៅសល់ជាក់ស្តែង (ដកចំនួនដែលកំពុងខ្ចីចេញ)
-                const borrowedCount = borrowRecords.filter(r => r.bookId === book.id && r.status === "Borrowed").length;
-                const remaining = book.qty - borrowedCount;
-
-                // បន្ថែមទៅក្នុងតារាង
-                const qtyBadge = remaining > 0 
-                    ? `<span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">${remaining} ក្បាល</span>`
-                    : `<span class="bg-rose-50 text-rose-700 px-3 py-1 rounded-full text-xs font-semibold">អស់ពីស្តុក</span>`;
-
-                tableBody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="py-4 text-center text-slate-400 font-medium">${index + 1}</td>
-                        <td class="py-4 font-semibold text-slate-800">${book.title}</td>
-                        <td class="py-4"><span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-medium">${book.category}</span></td>
-                        <td class="py-4 text-slate-500">${book.author}</td>
-                        <td class="py-4 text-center">${qtyBadge}</td>
-                    </tr>
-                `;
-
-                // បន្ថែមទៅក្នុង Select Option សម្រាប់ទម្រង់ខ្ចី (តែសៀវភៅណាដែលមាននៅសល់ប៉ុណ្ណោះ)
-                if (remaining > 0) {
-                    selectDropdown.innerHTML += `<option value="${book.id}">${book.title} (${remaining})</option>`;
-                }
-            });
-
-            // ធ្វើបច្ចុប្បន្នភាពលេខស្ថិតិខាងលើ
-            const totalQty = books.reduce((sum, b) => sum + b.qty, 0);
-            document.getElementById('total-books').innerText = totalQty.toLocaleString('km-KH');
-        }
-
-        // មុខងារស្វែងរកសៀវភៅ
-        function filterBooks() {
-            const query = document.getElementById('search-book').value.toLowerCase();
-            const rows = document.querySelectorAll('#book-list-table tr');
-            
-            rows.forEach(row => {
-                const title = row.cells[1].innerText.toLowerCase();
-                const author = row.cells[3].innerText.toLowerCase();
-                if (title.includes(query) || author.includes(query)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-
-        // មុខងារបន្ថែមសៀវភៅថ្មី
-        function addBook(e) {
-            e.preventDefault();
-            const title = document.getElementById('book-title').value;
-            const category = document.getElementById('book-category').value;
-            const author = document.getElementById('book-author').value;
-            const qty = parseInt(document.getElementById('book-qty').value);
-
-            const newBook = { id: Date.now(), title, category, author, qty };
-            books.push(newBook);
-            
-            renderBooks();
-            document.getElementById('book-form').reset();
-            alert("📚 បានរក្សាទុកសៀវភៅថ្មីដោយជោគជ័យ!");
-        }
-
-        // បង្ហាញបញ្ជីអ្នកខ្ចី-សង និងគណនាប្រាក់ពិន័យ
-        function renderBorrowRecords() {
-            const tableBody = document.getElementById('borrow-list-table');
-            tableBody.innerHTML = '';
-            
-            let activeBorrows = 0;
-            let overdueCount = 0;
-
-            const today = new Date(); // ថ្ងៃបច្ចុប្បន្ន (ប្រព័ន្ធយោងតាមឆ្នាំ ២០២៦)
-
-            borrowRecords.forEach(record => {
-                if (record.status === "Borrowed") activeBorrows++;
-
-                const book = books.find(b => b.id === record.bookId);
-                const dueDate = new Date(record.dueDate);
-                
-                // គណនាថ្ងៃហួសកំណត់ និងប្រាក់ពិន័យ
-                let statusBadge = '';
-                let fineText = '០ រៀល';
-                
-                // បំប្លែងទម្រង់ថ្ងៃខែសម្រាប់បង្ហាញជាភាសាខ្មែរ
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                const formattedDate = dueDate.toLocaleDateString('km-KH', options);
-
-                if (record.status === "Returned") {
-                    statusBadge = `<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-medium">📋 បានសងរួច</span>`;
-                } else if (today > dueDate) {
-                    // ប្រសិនបើហួសកាលកំណត់
-                    const diffTime = Math.abs(today - dueDate);
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-                    const fine = diffDays * 500; // ១ថ្ងៃ ៥០០ រៀល
-                    
-                    overdueCount++;
-                    statusBadge = `<span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-semibold animate-pulse">⚠️ ហួស ${diffDays} ថ្ងៃ</span>`;
-                    fineText = `<span class="text-rose-600 font-bold">${fine.toLocaleString('km-KH')} រៀល</span>`;
-                } else {
-                    statusBadge = `<span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-xs font-medium">⏳ កំពុងខ្ចី</span>`;
-                }
-
-                // ប៊ូតុងសកម្មភាពសងសៀវភៅ
-                const actionBtn = record.status === "Borrowed" 
-                    ? `<button onclick="returnBook(${record.id})" class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-lg shadow-sm transition">🔄 សងសៀវភៅ</button>`
-                    : `<span class="text-xs text-slate-400">គ្មានសកម្មភាព</span>`;
-
-                tableBody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="py-4 font-medium text-slate-800">${record.borrower}</td>
-                        <td class="py-4 text-slate-600">${book ? book.title : 'មិនស្គាល់សៀវភៅ'}</td>
-                        <td class="py-4 text-slate-500 text-xs">${formattedDate}</td>
-                        <td class="py-4">${statusBadge} <br> <span class="text-xs text-slate-400">ពិន័យ: </span>${fineText}</td>
-                        <td class="py-4 text-center">${actionBtn}</td>
-                    </tr>
-                `;
-            });
-
-            // ធ្វើបច្ចុប្បន្នភាព Dashboard សរុប
-            document.getElementById('total-borrowed').innerText = activeBorrows;
-            document.getElementById('total-overdue').innerText = overdueCount;
-        }
-
-        // មុខងារកត់ត្រាការខ្ចីថ្មី
-        function recordBorrow(e) {
-            e.preventDefault();
-            const borrower = document.getElementById('borrower-name').value;
-            const bookId = parseInt(document.getElementById('borrow-book-select').value);
-            const duration = parseInt(document.getElementById('borrow-duration').value);
-
-            if (!bookId) {
-                alert("⚠️ សូមជ្រើសរើសសៀវភៅដែលមានក្នុងស្តុក!");
-                return;
-            }
-
-            // គណនាថ្ងៃត្រូវសង ដោយបូកបន្ថែមរយៈពេលខ្ចី
-            const today = new Date();
-            const dueDate = new Date(today);
-            dueDate.setDate(today.getDate() + duration);
-            
-            // ទម្រង់កាលបរិច្ឆេទ YYYY-MM-DD
-            const dueDateString = dueDate.toISOString().split('T')[0];
-
-            const newRecord = {
-                id: Date.now(),
-                borrower,
-                bookId,
-                dueDate: dueDateString,
-                status: "Borrowed"
-            };
-
-            borrowRecords.unshift(newRecord); // បន្ថែមទៅលើគេបង្អស់
-            
-            renderBooks();
-            renderBorrowRecords();
-            document.getElementById('borrow-form').reset();
-            alert("📝 កត់ត្រាការខ្ចីរបស់គរុសិស្សបានជោគជ័យ!");
-        }
-
-        // មុខងារសងសៀវភៅវិញ
-        function returnBook(recordId) {
-            if(confirm("តើអ្នកពិតជាចង់បញ្ជាក់ការសងសៀវភៅនេះមែនទេ?")) {
-                const record = borrowRecords.find(r => r.id === recordId);
-                if (record) {
-                    record.status = "Returned";
-                    renderBooks();
-                    renderBorrowRecords();
-                    alert("✅ បានកត់ត្រាការសងសៀវភៅរួចរាល់ និងបញ្ចូលទៅក្នុងស្តុកវិញហើយ!");
-                }
-            }
-        }
-
-        // ដំណើរការដំបូងពេលបើក App
-        renderBooks();
-        renderBorrowRecords();
     </script>
 </body>
 </html>
