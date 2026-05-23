@@ -268,11 +268,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label class="required">នាមត្រកូល</label>
-                    <input type="text" required placeholder="ឧ. សុខ">
+                    <input type="text" id="reg-lastname" required placeholder="ឧ. សុខ">
                 </div>
                 <div class="form-group">
                     <label class="required">នាមខ្លួន</label>
-                    <input type="text" required placeholder="ឧ. តារា">
+                    <input type="text" id="reg-firstname" required placeholder="ឧ. តារា">
                 </div>
             </div>
 
@@ -303,17 +303,17 @@
             <div class="form-row">
                 <div class="form-group">
                     <label class="required">អត្តសញ្ញាណប័ណ្ណ / ID គ្រូ-សិស្ស</label>
-                    <input type="text" required placeholder="ឧ. ST-202601">
+                    <input type="text" id="reg-id" required placeholder="ឧ. ST-202601">
                 </div>
                 <div class="form-group">
                     <label class="required">លេខទូរស័ព្ទ</label>
-                    <input type="tel" required placeholder="ឧ. 097xxxxxxx">
+                    <input type="tel" id="reg-phone" required placeholder="ឧ. 097xxxxxxx">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Gmail (មិនបង្ខំ)</label>
-                <input type="email" placeholder="example@gmail.com">
+                <input type="email" id="reg-email" placeholder="example@gmail.com">
             </div>
 
             <div class="form-row">
@@ -340,7 +340,7 @@
         <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">បណ្ណាល័យឌីជីថលភូមិភាគស្ទឹងត្រែង</h2>
         <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចូលប្រើប្រាស់ប្រព័ន្ធ</h3>
         
-        <form onsubmit="event.preventDefault(); showPage('dashboard-page');">
+        <form onsubmit="event.preventDefault(); handleLogin();">
             <div class="form-group">
                 <label class="required">លេខទូរស័ព្ទ ឬ Gmail</label>
                 <input type="text" required placeholder="បញ្ចូល Gmail ឬ លេខទូរស័ព្ទ">
@@ -364,7 +364,7 @@
         <header>
             <div style="font-weight: bold; font-size: 16px;">Digital Library RTTC Stung Treng</div>
             <div style="display:flex; align-items:center; gap: 15px;">
-                <span id="user-display">គណនីសាកល្បង (បណ្ណារក្ស)</span>
+                <span id="user-display">គណនីសាកល្បង</span>
                 <button onclick="showPage('login-page')" style="background:#D32F2F; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">ចាកចេញ</button>
             </div>
         </header>
@@ -386,10 +386,10 @@
                 <div id="profile" class="tab-content active">
                     <h2>ព័ត៌មានផ្ទាល់ខ្លួន</h2>
                     <hr style="margin: 15px 0;">
-                    <p><strong>ឈ្មោះ៖</strong> សុខ តារា</p>
-                    <p><strong>តួនាទី៖</strong> គ្រូបណ្ណារក្ស (បណ្ណារក្សថ្មី)</p>
-                    <p><strong>ID៖</strong> ST-202601</p>
-                    <p><strong>Gmail៖</strong> sokdara.rttc@gmail.com</p>
+                    <p><strong>ឈ្មោះ៖</strong> <span id="prof-name">សុខ តារា</span></p>
+                    <p><strong>តួនាទី៖</strong> <span id="prof-role">គ្រូបណ្ណារក្ស (បណ្ណារក្សថ្មី)</span></p>
+                    <p><strong>ID៖</strong> <span id="prof-id">ST-202601</span></p>
+                    <p><strong>Gmail៖</strong> <span id="prof-email">sokdara.rttc@gmail.com</span></p>
                 </div>
 
                 <div id="research-gallery" class="tab-content">
@@ -512,34 +512,39 @@
     </div>
 
     <script>
-        // បង្កើតអថេរទុកចំនួនអ្នកប្រើប្រាស់ដើម
+        // អថេររក្សាទុកទិន្នន័យបណ្តោះអាសន្ន (Temporary Database)
+        let currentUser = {
+            firstname: "តារា",
+            lastname: "សុខ",
+            role: "librarian",
+            roleKh: "គ្រូបណ្ណារក្ស (បណ្ណារក្សថ្មី)",
+            id: "ST-202601",
+            email: "sokdara.rttc@gmail.com"
+        };
+
         let traineeTotal = 120;
         let lecturerTotal = 25;
 
-        // មុខងារបំប្លែងលេខធម្មតា (123) ទៅជាអក្សរលេខខ្មែរ (១២៣)
         function toKhmerNumber(num) {
             const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
             return num.toString().split('').map(digit => khmerDigits[digit] || digit).join('');
         }
 
-        // មុខងារគ្រប់គ្រងការផ្លាស់ប្តូរតួនាទី (បង្ហាញ/លាក់ ប្រអប់បំពេញទៅតាមតួនាទី)
         function handleRoleChange() {
             const roleSelect = document.getElementById('role-select').value;
             const genOption = document.getElementById('generation-option');
             const libOptions = document.getElementById('librarian-options');
             const traineeGenInput = document.getElementById('trainee-gen');
 
-            // លក្ខខណ្ឌសម្រាប់គរុសិស្ស (លោតប្រអប់ជំនាន់ទី...)
             if (roleSelect === 'trainee') {
                 genOption.style.display = 'block';
-                traineeGenInput.required = true; // បង្ខំឱ្យបំពេញ
+                traineeGenInput.required = true;
             } else {
                 genOption.style.display = 'none';
                 traineeGenInput.required = false;
-                traineeGenInput.value = ''; // សម្អាតតម្លៃចោលបើដូរតួនាទីចេញ
+                traineeGenInput.value = '';
             }
 
-            // លក្ខខណ្ឌសម្រាប់បណ្ណារក្ស
             if (roleSelect === 'librarian') {
                 libOptions.style.display = 'block';
             } else {
@@ -547,28 +552,59 @@
             }
         }
 
-        // មុខងារគ្រប់គ្រងការចុះឈ្មោះ និងកើនចំនួនលេខភ្លាមៗ
+        // មុខងាររក្សាទុកទិន្នន័យពី Form ចុះឈ្មោះ និងបច្ចុប្បន្នភាពចំនួនអ្នកប្រើប្រាស់
         function handleSignUp() {
-            const roleSelect = document.getElementById('role-select').value;
+            const lastname = document.getElementById('reg-lastname').value;
+            const firstname = document.getElementById('reg-firstname').value;
+            const role = document.getElementById('role-select').value;
+            const id = document.getElementById('reg-id').value;
+            const email = document.getElementById('reg-email').value || "មិនមានឡើយ";
             const genValue = document.getElementById('trainee-gen').value;
-            
-            if (roleSelect === 'trainee') {
-                traineeTotal += 1; // កើនចំនួនគរុសិស្ស
+
+            let roleKh = "";
+            if (role === 'director') roleKh = "គ្រូនាយក";
+            if (role === 'lecturer') roleKh = "គ្រូឧទ្ទេស";
+            if (role === 'librarian') roleKh = "គ្រូបណ្ណារក្ស";
+            if (role === 'trainee') roleKh = "គរុសិស្ស (ជំនាន់ទី " + toKhmerNumber(genValue) + ")";
+
+            // រក្សាទុកទិន្នន័យដែលទើបចុះឈ្មោះចូលក្នុងអថេរ currentUser
+            currentUser = {
+                firstname: firstname,
+                lastname: lastname,
+                role: role,
+                roleKh: roleKh,
+                id: id,
+                email: email
+            };
+
+            // បូកបញ្ចូលចំនួនអ្នកប្រើប្រាស់ទៅតាមតួនាទី
+            if (role === 'trainee') {
+                traineeTotal += 1;
                 document.getElementById('trainee-count').innerText = toKhmerNumber(traineeTotal) + " នាក់";
-                alert('ចុះឈ្មោះជា "គរុសិស្ស ជំនាន់ទី ' + toKhmerNumber(genValue) + '" បានជោគជ័យ! ទិន្នន័យត្រូវបានបច្ចុប្បន្នភាព។');
-            } else if (roleSelect === 'lecturer') {
-                lecturerTotal += 1; // កើនចំនួនគ្រូឧទ្ទេស
+                alert('ចុះឈ្មោះជា "គរុសិស្ស ជំនាន់ទី ' + toKhmerNumber(genValue) + '" រួចរាល់!');
+            } else if (role === 'lecturer') {
+                lecturerTotal += 1;
                 document.getElementById('lecturer-count').innerText = toKhmerNumber(lecturerTotal) + " នាក់";
-                alert('ចុះឈ្មោះជា "គ្រូឧទ្ទេស" បានជោគជ័យ! ទិន្នន័យត្រូវបានបច្ចុប្បន្នភាព។');
+                alert('ចុះឈ្មោះជា "គ្រូឧទ្ទេស" រួចរាល់!');
             } else {
                 alert('ចុះឈ្មោះបានជោគជ័យ!');
             }
 
-            // ត្រឡប់ទៅផ្ទាំង Login វិញក្រោយចុះឈ្មោះរួច
             showPage('login-page');
         }
 
-        // មុខងារសម្រាប់ប្តូរទំព័រធំៗ (Sign Up, Login, Dashboard)
+        // មុខងារ Login៖ យកទិន្នន័យដែលបានចុះឈ្មោះមុននេះមកបង្ហាញលើ Dashboard
+        function handleLogin() {
+            // បោះទិន្នន័យទៅកាន់ផ្ទៃមាតិកា Dashboard
+            document.getElementById('user-display').innerText = currentUser.lastname + " " + currentUser.firstname + " (" + currentUser.roleKh + ")";
+            document.getElementById('prof-name').innerText = currentUser.lastname + " " + currentUser.firstname;
+            document.getElementById('prof-role').innerText = currentUser.roleKh;
+            document.getElementById('prof-id').innerText = currentUser.id;
+            document.getElementById('prof-email').innerText = currentUser.email;
+
+            showPage('dashboard-page');
+        }
+
         function showPage(pageId) {
             document.getElementById('signup-page').style.display = 'none';
             document.getElementById('login-page').style.display = 'none';
@@ -581,7 +617,6 @@
             }
         }
 
-        // មុខងារសម្រាប់ចុចដូរផ្ទាំងមាតិកា (Tabs) លើ Dashboard
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
