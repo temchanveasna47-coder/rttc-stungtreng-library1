@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យឌីជីថល - ភូមិភាគស្ទឹងត្រែង</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&family=Moul&display=swap" rel="stylesheet">
+    <title>បណ្ណាល័យ Digital - មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសាន ខេត្តស្ទឹងត្រែង</title>
+    <!-- អក្សរខ្មែរស្អាតពី Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&family=Khmer&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #1565C0;
-            --secondary-color: #0D47A1;
-            --accent-color: #E65100;
-            --bg-color: #F4F6F9;
-            --text-color: #2C3E50;
-            --sidebar-color: #1E293B;
+            --primary-color: #0b5394;
+            --secondary-color: #e69138;
+            --dark-color: #20124d;
+            --light-color: #f3f3f3;
         }
 
         * {
@@ -24,580 +23,293 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--light-color);
+            color: #333;
+            line-height: 1.6;
         }
 
-        h1, h2, h3 {
-            color: var(--secondary-color);
-        }
-
-        .moul-text {
-            font-family: 'Moul', serif;
-            color: #D32F2F;
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
             text-align: center;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--secondary-color);
         }
 
-        /* --- ផ្នែកទម្រង់ទូទៅ (Auth Containers) --- */
-        .auth-container {
-            max-width: 550px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
+        header h1 {
+            font-size: 1.8rem;
             margin-bottom: 5px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #CBD5E1;
-            border-radius: 6px;
-            font-size: 14px;
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section / Search bar */
+        .hero {
+            background: linear-gradient(rgba(11, 83, 148, 0.8), rgba(32, 18, 77, 0.8)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
             outline: none;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(21, 101, 192, 0.3);
-        }
-
-        .required::after {
-            content: " *";
-            color: red;
-        }
-
-        /* ជួរដេកទម្រង់ពីរទន្ទឹមគ្នា */
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: var(--primary-color);
+        .search-container button {
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
             color: white;
-            padding: 12px;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 0 4px 4px 0;
             cursor: pointer;
-            margin-top: 10px;
+            font-weight: bold;
         }
 
-        .btn-submit:hover {
-            background: var(--secondary-color);
+        .search-container button:hover {
+            background-color: #d47f28;
         }
 
-        .switch-form {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        .switch-form a {
+        .section-title {
             color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
 
-        /* --- ផ្នែកផ្ទៃ Dashboard ក្រោយពេល Login រួច --- */
-        #dashboard-page {
-            display: none; 
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .main-box {
-            display: flex;
-            flex: 1;
-        }
-
-        /* របារចំហៀង (Sidebar Navigation) */
-        nav {
-            width: 260px;
-            background: var(--sidebar-color);
-            color: #94A3B8;
-            padding: 20px 0;
-        }
-
-        nav ul {
-            list-style: none;
-        }
-
-        nav ul li {
-            padding: 12px 20px;
-            cursor: pointer;
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-
-        nav ul li:hover, nav ul li.active {
-            background: #334155;
-            color: white;
-            border-left: 4px solid #38BDF8;
-        }
-
-        /* តំបន់បង្ហាញមាតិកា (Content Area) */
-        .content {
-            flex: 1;
-            padding: 30px;
-            background: var(--bg-color);
-        }
-
-        .tab-content {
-            display: none;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* កាតបង្ហាញទិន្នន័យ */
-        .grid-container {
+        /* Grid Layout for Books */
+        .book-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .book-card {
-            border: 1px solid #E2E8F0;
+            background: white;
             border-radius: 8px;
             overflow: hidden;
-            background: white;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
         }
 
         .book-cover {
-            width: 100%;
-            height: 220px;
-            background: #E2E8F0;
+            height: 260px;
+            background-color: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #64748B;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            /* អ្នកអាចប្ដូរទៅជាលីងរូបភាពពិតប្រាកដក្នុង attribute src បាន */
+            background-image: linear-gradient(45deg, #3a6073, #3a7bd5);
+            color: white;
         }
 
         .book-info {
-            padding: 10px;
-            font-size: 14px;
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .badge {
-            background: #E2E8F0;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            display: inline-block;
-            margin-top: 5px;
+        .book-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 5px;
         }
 
-        .btn-add {
-            background: #10B981;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .book-author {
+            font-size: 0.85rem;
+            color: #666;
             margin-bottom: 15px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        .btn-download {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
-        table, th, td {
-            border: 1px solid #CBD5E1;
+        .btn-download:hover {
+            background-color: var(--dark-color);
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            font-size: 14px;
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--secondary-color);
         }
 
-        th {
-            background: #F1F5F9;
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.4rem; }
+            nav { flex-wrap: wrap; }
+            nav a { margin: 5px; padding: 6px 12px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="signup-page" class="auth-container">
-        <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</h2>
-        <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចុះឈ្មោះបង្កើតគណនីថ្មី</h3>
+    <!-- ផ្នែកក្បាលគេហទំព័រ -->
+    <header>
+        <h1>បណ្ណាល័យឌីជីថល (Digital Library)</h1>
+        <p>មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសាន ខេត្តស្ទឹងត្រែង</p>
+    </header>
+
+    <!-- របារមុខងាររុករក -->
+    <nav>
+        <a href="#" class="active">ទំព័រដើម</a>
+        <a href="#">សៀវភៅសិក្សាគោល</a>
+        <a href="#">វិធីសាស្ត្របង្រៀន</a>
+        <a href="#">ស្រាវជ្រាវ</a>
+        <a href="#">ឯកសារយោង</a>
+    </nav>
+
+    <!-- ផ្នែកស្វែងរកសៀវភៅ -->
+    <section class="hero">
+        <h2>ស្វែងរកសៀវភៅ និងឯកសារស្រាវជ្រាវអប់រំ</h2>
+        <div class="search-container">
+            <input type="text" placeholder="វាយឈ្មោះសៀវភៅ ឬអ្នកនិពន្ធនៅទីនេះ...">
+            <button type="button">ស្វែងរក</button>
+        </div>
+    </section>
+
+    <!-- ផ្នែកមាតិកាសៀវភៅ -->
+    <main class="container">
         
-        <form onsubmit="event.preventDefault(); handleSignUp();">
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="required">នាមត្រកូល</label>
-                    <input type="text" id="reg-lastname" required placeholder="ឧ. សុខ">
-                </div>
-                <div class="form-group">
-                    <label class="required">នាមខ្លួន</label>
-                    <input type="text" id="reg-firstname" required placeholder="ឧ. តារា">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="required">តួនាទីរបស់អ្នក</label>
-                <select id="role-select" onchange="handleRoleChange()" required>
-                    <option value="">--សូមជ្រើសរើសតួនាទី--</option>
-                    <option value="director">គ្រូនាយក</option>
-                    <option value="lecturer">គ្រូឧទ្ទេស</option>
-                    <option value="librarian">គ្រូបណ្ណារក្ស</option>
-                    <option value="trainee">គរុសិស្ស</option>
-                </select>
-            </div>
-
-            <div class="form-group" id="generation-option" style="display: none; background: #E0F2FE; padding: 12px; border-radius: 6px; border-left: 4px solid var(--primary-color);">
-                <label class="required" style="color: var(--secondary-color);">គរុសិស្សជំនាន់ទី</label>
-                <input type="number" id="trainee-gen" placeholder="ឧ. ៤០">
-            </div>
-
-            <div class="form-group" id="librarian-options" style="display: none; background: #FFF3E0; padding: 10px; border-radius: 6px;">
-                <label class="required" style="color: var(--accent-color);">ប្រភេទបណ្ណារក្ស (ត្រូវការការអនុញ្ញាតពី Admin)</label>
-                <select id="lib-type">
-                    <option value="new">បណ្ណារក្សថ្មី</option>
-                    <option value="change">ផ្លាស់ប្តូរបណ្ណារក្ស</option>
-                </select>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="required">អត្តសញ្ញាណប័ណ្ណ / ID គ្រូ-សិស្ស</label>
-                    <input type="text" id="reg-id" required placeholder="ឧ. ST-202601">
-                </div>
-                <div class="form-group">
-                    <label class="required">លេខទូរស័ព្ទ</label>
-                    <input type="tel" id="reg-phone" required placeholder="ឧ. 097xxxxxxx">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Gmail (មិនបង្ខំ)</label>
-                <input type="email" id="reg-email" placeholder="example@gmail.com">
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="required">ពាក្យសម្ងាត់</label>
-                    <input type="password" required placeholder="••••••••">
-                </div>
-                <div class="form-group">
-                    <label class="required">បញ្ជាក់ពាក្យសម្ងាត់</label>
-                    <input type="password" required placeholder="••••••••">
-                </div>
-            </div>
-
-            <button type="submit" class="btn-submit">ចុះឈ្មោះប្រើប្រាស់</button>
-            
-            <div class="switch-form">
-                មានគណនីរួចហើយមែនទេ? <a href="#" onclick="showPage('login-page')">ចូលប្រើប្រាស់នៅទីនេះ</a>
-            </div>
-        </form>
-    </div>
-
-
-    <div id="login-page" class="auth-container" style="display: none;">
-        <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">បណ្ណាល័យឌីជីថលភូមិភាគស្ទឹងត្រែង</h2>
-        <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចូលប្រើប្រាស់ប្រព័ន្ធ</h3>
+        <h3 class="section-title">សៀវភៅថ្មីៗសម្រាប់គរុសិស្ស</h3>
         
-        <form onsubmit="event.preventDefault(); handleLogin();">
-            <div class="form-group">
-                <label class="required">លេខទូរស័ព្ទ ឬ Gmail</label>
-                <input type="text" id="login-username" required placeholder="បញ្ចូល Gmail ឬ លេខទូរស័ព្ទ">
+        <div class="book-grid">
+            <!-- សៀវភៅទី ១ -->
+            <div class="book-card">
+                <div class="book-cover" style="background-image: linear-gradient(45deg, #1d976c, #93f9b9);">វិធីសាស្ត្របង្រៀនទូទៅ</div>
+                <div class="book-info">
+                    <div>
+                        <div class="book-title">វិធីសាស្ត្របង្រៀន និងរៀនបែបសកម្ម</div>
+                        <div class="book-author">ដកស្រង់ពី៖ ក្រសួងអប់រំ យុវជន និងកីឡា</div>
+                    </div>
+                    <a href="#" class="btn-download">ទាញយក PDF</a>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label class="required">ពាក្យសម្ងាត់</label>
-                <input type="password" required placeholder="បញ្ចូលពាក្យសម្ងាត់">
+            <!-- សៀវភៅទី ២ -->
+            <div class="book-card">
+                <div class="book-cover" style="background-image: linear-gradient(45deg, #ef473a, #f27121);">ចិត្តវិទ្យាគរុកោសល្យ</div>
+                <div class="book-info">
+                    <div>
+                        <div class="book-title">ចិត្តវិទ្យាសម្រាប់ការបង្រៀន</div>
+                        <div class="book-author">រៀបចំដោយ៖ គ្រូឧទ្ទេសជំនាញ</div>
+                    </div>
+                    <a href="#" class="btn-download">ទាញយក PDF</a>
+                </div>
             </div>
 
-            <button type="submit" class="btn-submit">ចូលប្រើប្រាស់</button>
-            
-            <div class="switch-form">
-                មិនទាន់មានគណនីមែនទេ? <a href="#" onclick="showPage('signup-page')">ចុះឈ្មោះនៅទីនេះ</a>
+            <!-- សៀវភៅទី ៣ -->
+            <div class="book-card">
+                <div class="book-cover" style="background-image: linear-gradient(45deg, #8e2de2, #4a00e0);">អក្សរសិល្ប៍ខ្មែរ</div>
+                <div class="book-info">
+                    <div>
+                        <div class="book-title">វិភាគអក្សរសិល្ប៍សម្រាប់គ្រូ</div>
+                        <div class="book-author">អ្នកនិពន្ធ៖ គណៈកម្មការជំនាញ</div>
+                    </div>
+                    <a href="#" class="btn-download">ទាញយក PDF</a>
+                </div>
             </div>
-        </form>
-    </div>
 
-
-    <div id="dashboard-page">
-        <header>
-            <div style="font-weight: bold; font-size: 16px;">Digital Library RTTC Stung Treng</div>
-            <div style="display:flex; align-items:center; gap: 15px;">
-                <span id="user-display">គណនីសាកល្បង</span>
-                <button onclick="showPage('login-page')" style="background:#D32F2F; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">ចាកចេញ</button>
-            </div>
-        </header>
-
-        <div class="main-box">
-            <nav>
-                <ul>
-                    <li class="nav-item active" onclick="switchTab('profile')">👤 ព័ត៌មានផ្ទាល់ខ្លួន</li>
-                    <li class="nav-item" onclick="switchTab('research-gallery')">📚 កម្រងស្នាដៃស្រាវជ្រាវ</li>
-                    <li class="nav-item" onclick="switchTab('study-docs')">📖 ឯកសារសិក្សាស្រាវជ្រាវ</li>
-                    <li class="nav-item" onclick="switchTab('borrow-list')">🔄 បញ្ជីខ្ចី-សងសៀវភៅ</li>
-                    <li class="nav-item" onclick="switchTab('users-count')">👥 ចំនួនអ្នកប្រើប្រាស់</li>
-                    <li class="nav-item" onclick="switchTab('videos')">🎥 វីដេអូស្រាវជ្រាវ</li>
-                </ul>
-            </nav>
-
-            <div class="content">
-                
-                <div id="profile" class="tab-content active">
-                    <h2>ព័ត៌មានផ្ទាល់ខ្លួន</h2>
-                    <hr style="margin: 15px 0;">
-                    <p><strong>ឈ្មោះ៖</strong> <span id="prof-name">សុខ តារា</span></p>
-                    <p><strong>តួនាទី៖</strong> <span id="prof-role">គ្រូបណ្ណារក្ស (បណ្ណារក្សថ្មី)</span></p>
-                    <p><strong>ID៖</strong> <span id="prof-id">ST-202601</span></p>
-                    <p><strong>Gmail៖</strong> <span id="prof-email">sokdara.rttc@gmail.com</span></p>
-                </div>
-
-                <div id="research-gallery" class="tab-content">
-                    <h2>កម្រងស្នាដៃស្រាវជ្រាវ</h2>
-                    <p style="color: #64748B; margin-bottom: 15px;">(សិទ្ធិបញ្ចូល៖ គ្រូបណ្ណារក្ស និងនាយក | សិទ្ធិមើល៖ គ្រូឧទ្ទេស និងគរុសិស្ស)</p>
-                    <button class="btn-add">+ បញ្ចូលសៀវភៅថ្មី (ភ្ជាប់ Google Drive / ឯកសារ PDF)</button>
-                    
-                    <div class="grid-container">
-                        <div class="book-card">
-                            <div class="book-cover">📘 រូបភាពក្របមុខ</div>
-                            <div class="book-info">
-                                <strong>ការស្រាវជ្រាវគរុកោសល្យ</strong><br>
-                                <span class="badge">លំនាំ Drive PDF</span>
-                            </div>
-                        </div>
+            <!-- សៀវភៅទី ៤ -->
+            <div class="book-card">
+                <div class="book-cover" style="background-image: linear-gradient(45deg, #1f4068, #162447);">បច្ចេកវិទ្យាក្នុងការអប់រំ</div>
+                <div class="book-info">
+                    <div>
+                        <div class="book-title">ការប្រើប្រាស់ ICT ក្នុងការបង្រៀន</div>
+                        <div class="book-author">ឯកសារណែនាំសម្រាប់គរុសិស្ស</div>
                     </div>
+                    <a href="#" class="btn-download">ទាញយក PDF</a>
                 </div>
-
-                <div id="study-docs" class="tab-content">
-                    <h2>ឯកសារសិក្សាស្រាវជ្រាវ</h2>
-                    <p style="margin-bottom: 15px;">សូមជ្រើសរើសប្រភេទឯកសារ ឬវិធីសាស្ត្របង្រៀន៖</p>
-                    <div class="form-group" style="max-width: 300px;">
-                        <select onchange="alert('អ្នកបានជ្រើសរើសឯកសារ៖ ' + this.value)">
-                            <option>-- ជ្រើសរើសវិធីសាស្ត្របង្រៀន --</option>
-                            <option>វិធីសាស្ត្របង្រៀនគណិតវិទ្យា</option>
-                            <option>វិធីសាស្ត្របង្រៀនភាសាខ្មែរ</option>
-                            <option>វិធីសាស្ត្របង្រៀនសិក្សាសង្គម</option>
-                            <option>វិធីសាស្ត្របង្រៀនវិទ្យាសាស្ត្រ</option>
-                            <option>-- ជ្រើសរើសចំណេះដឹងផ្សេងៗ --</option>
-                            <option>ចំណេះដឹងទូទៅ</option>
-                            <option>ប្រវត្តិសាស្ត្រ</option>
-                            <option>គណិតវិទ្យា</option>
-                            <option>វិទ្យាសាស្ត្រ</option>
-                            <option>បច្ចេកវិទ្យា</option>
-                            <option>អក្សរសាស្ត្រខ្មែរ</option>
-                            <option>ឯកសារជាភាសាអង់គ្លេស</option>
-                        </select>
-                    </div>
-                    <button class="btn-add">+ បញ្ចូលឯកសារថ្មី (PDF & Cover)</button>
-                </div>
-
-                <div id="borrow-list" class="tab-content">
-                    <h2>បញ្ជីខ្ចី-សងសៀវភៅ</h2>
-                    <p style="color: #64748B; margin-bottom: 10px;">(គ្រូបណ្ណារក្សមើលឃើញទាំងអស់ និងបញ្ចូលបាន | គ្រូឧទ្ទេស/គរុសិស្សមើលឃើញតែរបស់ខ្លួន)</p>
-                    <p style="color: var(--accent-color); font-weight: bold;">⚠️ លក្ខខណ្ឌ៖ ប្រសិនបើហួសកាលកំណត់ ផាកពិន័យ ៥០០៛ ក្នុងមួយថ្ងៃ</p>
-                    <button class="btn-add">+ បង្កើតទិន្នន័យខ្ចីថ្មី</button>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ឈ្មោះអ្នកខ្ចី</th>
-                                <th>ចំណងជើងសៀវភៅ</th>
-                                <th>កាលបរិច្ឆេទខ្ចី</th>
-                                <th>កាលបរិច្ឆេទត្រូវសង</th>
-                                <th>រយៈពេលខ្ចី</th>
-                                <th>ស្ថានភាព / ថ្ងៃហួសកំណត់</th>
-                                <th>ប្រាក់ផាក (រៀល)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ចាន់ ណារ៉ុង (គរុសិស្ស)</td>
-                                <td>វិធីសាស្ត្របង្រៀនភាសាខ្មែរ ថ្នាក់ទី៤</td>
-                                <td>10-May-2026</td>
-                                <td>17-May-2026</td>
-                                <td>7 ថ្ងៃ</td>
-                                <td style="color: red; font-weight: bold;">ហួសកំណត់ ៦ ថ្ងៃ</td>
-                                <td style="color: red; font-weight: bold;">3,000 ៛</td>
-                            </tr>
-                            <tr>
-                                <td>ម៉ៅ វណ្ណឌី (គ្រូឧទ្ទេស)</td>
-                                <td>គណិតវិទ្យាថ្នាក់ខ្ពស់</td>
-                                <td>15-May-2026</td>
-                                <td>22-May-2026</td>
-                                <td>7 ថ្ងៃ</td>
-                                <td style="color: green;">បានសងរួចរាល់</td>
-                                <td>0 ៛</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="users-count" class="tab-content">
-                    <h2>ចំនួនអ្នកប្រើប្រាស់ក្នុងប្រព័ន្ធ</h2>
-                    <p style="color: #64748B; margin-bottom: 15px;">ទិន្នន័យសរុបគិតត្រឹមពេលបច្ចុប្បន្ន៖</p>
-                    <div class="grid-container">
-                        <div class="book-card" style="padding: 20px; background: #EFF6FF; border: 1px solid #BFDBFE;">
-                            <h3 style="color: var(--primary-color);">គរុសិស្ស</h3>
-                            <h2 id="trainee-count" style="font-size: 32px; color: var(--primary-color); margin-top: 10px;">១២០ នាក់</h2>
-                        </div>
-                        <div class="book-card" style="padding: 20px; background: #ECFDF5; border: 1px solid #A7F3D0;">
-                            <h3 style="color: #10B981;">គ្រូឧទ្ទេស</h3>
-                            <h2 id="lecturer-count" style="font-size: 32px; color: #10B981; margin-top: 10px;">២៥ នាក់</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="videos" class="tab-content">
-                    <h2>វីដេអូស្រាវជ្រាវគរុកោសល្យ</h2>
-                    <p style="color: #64748B; margin-bottom: 15px;">(គ្រូនាយក គ្រូឧទ្ទេស និងបណ្ណារក្សអាចបញ្ចូលនិងមើល | គរុសិស្សបានតែមើល)</p>
-                    <button class="btn-add">+ បង្ហោះវីដេអូថ្មី</button>
-                    <div class="grid-container">
-                        <div class="book-card">
-                            <div class="book-cover" style="background:#1E293B; color:white;">▶️ Video Player</div>
-                            <div class="book-info" style="text-align: left;">
-                                <strong>ប្រធានបទ៖ វិធីសាស្ត្របង្រៀនបែបរិះរក</strong><br>
-                                <small>គ្រូឧទ្ទេស៖ គង់ សំរេច</small><br>
-                                <small>ឯកទេស៖ វិធីសាស្ត្រគណិតវិទ្យា</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
 
-    <script>
-        // បង្កើត Object សម្រាប់ធ្វើជា Database គណនីបណ្តោះអាសន្ន
-        let registeredUsers = {};
+    </main>
 
-        // ចំនួនលេខអ្នកប្រើប្រាស់ជាលំនាំដើម (Default Numbers)
-        let traineeTotal = 120;
-        let lecturerTotal = 25;
+    <!-- ផ្នែកខាងក្រោមគេហទំព័រ -->
+    <footer>
+        <p>&copy; ២០២៦ មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">រក្សាសិទ្ធិគ្រប់យ៉ាងដោយផ្នែកព័ត៌មានវិទ្យា</p>
+    </footer>
 
-        // អនុគមន៍បំប្លែងលេខទៅជាអក្សរខ្មែរ
-        function toKhmerNumber(num) {
-            const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
-            return num.toString().split('').map(digit => khmerDigits[digit] || digit).join('');
-        }
-
-        // បង្ហាញ ឬលាក់ប្រអប់បំពេញ «ជំនាន់ទី» ទៅតាមតួនាទី
-        function handleRoleChange() {
-            const roleSelect = document.getElementById('role-select').value;
-            const genOption = document.getElementById('generation-option');
-            const libOptions = document.getElementById('librarian-options');
-            const traineeGenInput = document.getElementById('trainee-gen');
-
-            if (roleSelect === 'trainee') {
-                genOption.style.display = 'block';
-                traineeGenInput.required = true;
-            } else {
-                genOption.style.display = 'none';
-                traineeGenInput.required = false;
-                traineeGenInput.value = '';
-            }
-
-            if (roleSelect === 'librarian') {
-                libOptions.style.display = 'block';
-            } else {
-                libOptions.style.display = 'none';
-            }
-        }
-
-        // ១. មុខងារចុះឈ្មោះ៖ រក្សាទុកទិន្នន័យ (មិនទាន់លោតចំនួនលេខក្នុង Dashboard ឡើយ)
-        function handleSignUp() {
-            const lastname = document.getElementById('reg-lastname').value;
-            const firstname = document.getElementById('reg-firstname').value;
-            const role = document.getElementById('role-select').value;
-            const id = document.getElementById('reg-id').value;
-            const phone = document.getElementById('reg-phone').value;
-            const email = document.getElementById('reg-email').value || "មិនមានឡើយ";
-            const genValue = document.getElementById('trainee-gen').value;
-
-            let roleKh = "";
-            if (role === 'director') roleKh = "គ្រូនាយក";
-            if (role === 'lecturer') roleKh = "គ្រូឧទ្ទេស";
-            if (role === 'librarian') roleKh = "គ្រូបណ្ណារក្ស";
-            if (role === 'trainee') roleKh = "គរុសិស្ស (ជំនាន់ទី " + toKhmerNumber(genValue) + ")";
-
-            // រក្សាទុកទិន្នន័យចូលក្នុង Object registeredUsers ដោយប្រើ លេខទូរស័ព្ទ ជា Key សម្រាប់សម្គាល់
-            registeredUsers[phone] = {
-                firstname: firstname,
-                lastname: lastname,
-                role: role,
-                roleKh: roleKh,
-                id: id,
-                email: email,
-                hasCounted: false // កំណត់ថាគណនីថ្មីនេះមិនទាន់ត្រូវបានបូកបញ្ចូលក្នុងប្រព័ន្ធនៅឡើយទេ
-            };
-
-            // បើបំពេញ Gmail គឺរក្សាទុកជា Key មួយទៀតដើម្បីងាយស្រួល Login តាមប្រអប់តែមួយ
-            if(document.getElementById('reg-email').value) {
-                registeredUsers[email] = registeredUsers[phone];
-            }
-
-            alert('គណនីរបស់អ្នកត្រូវបានបង្កើតជោគជ័យ! សូមធ្វើការចូលប្រើប្រាស់ (Login) ដើម្បីចូលទៅកាន់ប្រព័ន្ធ។');
-            showPage('login-page');
-        }
-
-        // ២. មុខងារចូលប្រើប្រាស់៖ លុះត្រាតែ Login ជោគជ័យ ទើបលោតចំនួនលេខកើនឡើងលើ Dashboard
-        function handleLogin() {
-            const usernameInput = document.getElementById('login-username').value;
-            
-            // ពិនិត្យមើលថាតើ username នោះមានចុះឈ្មោះពិតមែនឬទេ
-            if (registeredUsers[usernameInput]) {
-                const user = registeredUsers[usernameInput];
-
-                // លក្ខខណ្ឌស្នូល៖ បើជាគណនីថ្មីពិតប្រាកដ និងមិនទាន់បានរាប់បញ្ចូលចំនួនលេខ
-                if (!user.hasCounted) {
-                    if (user.role === 'trainee') {
-                        traineeTotal += 1; // លោតចំនួនគរុសិស្សភ្លាមៗ
-                    } else if (user.role === 'lecturer') {
-                        lecturerTotal += 1; // លោតចំនួនគ្រូឧទ្ទេសភ្លាមៗ
-                    }
-                    user.hasCounted = true; // វាយត្រា അടയാളសម្គាល់ថាបានបូករួចហើយ ដើម្បីកុំឱ្យកើនឡើងជាន់គ្នានៅពេល Login លើកក្រោយៗ
-                }
-
-                // ផ្លាស់ប្តូរទិន្នន័យផ្ទាល់ខ្លួន និង Header ឱ្យទៅជាគណនីដែលទើបនឹង Login ចូលនោះ
-                document.getElementById('user-display').innerText = user.lastname + " " + user.firstname + " (" + user.roleKh + ")";
-                document.getElementById('prof-name').innerText = user.lastname + " " + user.firstname;
-                document.getElementById('prof-role').innerText = user.roleKh;
-                document.getElementById('prof-id').innerText = user.id;
-                document.getElementById('prof
+</body>
+</html>
