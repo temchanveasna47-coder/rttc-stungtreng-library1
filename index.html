@@ -90,21 +90,6 @@
             flex: 1;
         }
 
-        /* ផ្នែកកូដ OTP */
-        .otp-block {
-            display: flex;
-            gap: 10px;
-        }
-        .btn-otp {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
         .btn-submit {
             width: 100%;
             background: var(--primary-color);
@@ -283,7 +268,7 @@
         <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</h2>
         <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចុះឈ្មោះបង្កើតគណនីថ្មី</h3>
         
-        <form onsubmit="event.preventDefault(); showPage('login-page');">
+        <form onsubmit="event.preventDefault(); alert('ចុះឈ្មោះបានជោគជ័យ!'); showPage('login-page');">
             <div class="form-row">
                 <div class="form-group">
                     <label class="required">នាមត្រកូល</label>
@@ -326,17 +311,10 @@
                 </div>
             </div>
 
+            <!-- បានកែប្រែ៖ ដាក់ទម្រង់បំពេញ Gmail ធម្មតា (មិនមានប្រព័ន្ធ OTP ទេ) -->
             <div class="form-group">
-                <label class="required">Gmail សម្រាប់ទទួលកូដ OTP</label>
-                <div class="otp-block">
-                    <input type="email" id="signup-email" required placeholder="example@gmail.com">
-                    <button type="button" class="btn-otp" onclick="sendOTP()">ស្នើសុំ OTP</button>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="required">បញ្ចូលកូដ OTP ពី Gmail</label>
-                <input type="text" required placeholder="បញ្ចូលកូដ ៦ ខ្ទង់">
+                <label>Gmail (មិនបង្ខំ)</label>
+                <input type="email" placeholder="example@gmail.com">
             </div>
 
             <div class="form-row">
@@ -532,7 +510,6 @@
                     <p style="color: #64748B; margin-bottom: 15px;">(គ្រូនាយក គ្រូឧទ្ទេស និងបណ្ណារក្សអាចបញ្ចូលនិងមើល | គរុសិស្សបានតែមើល)</p>
                     <button class="btn-add">+ បង្ហោះវីដេអូថ្មី</button>
 
-                    <!-- ទម្រង់បំពេញពេលបង្ហោះវីដេអូ -->
                     <div style="background: #F8FAFC; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px dashed #CBD5E1;">
                         <h4 style="margin-bottom: 10px;">ទម្រង់បង្ហោះវីដេអូគំរូ</h4>
                         <div class="form-row">
@@ -562,7 +539,6 @@
     <!-- ផ្នែកបញ្ជាគំនិត JavaScript (LOGIC HANDLER) -->
     <!-- ========================================== -->
     <script>
-        // មុខងារសម្រាប់ប្តូរទំព័រធំៗ (Sign Up, Login, Dashboard)
         function showPage(pageId) {
             document.getElementById('signup-page').style.display = 'none';
             document.getElementById('login-page').style.display = 'none';
@@ -575,7 +551,6 @@
             }
         }
 
-        // មុខងារសម្រាប់បង្ហាញជម្រើសបន្ថែមរបស់ "បណ្ណារក្ស" នៅពេលចុះឈ្មោះ
         function toggleLibrarianOptions() {
             const roleSelect = document.getElementById('role-select');
             const libOptions = document.getElementById('librarian-options');
@@ -587,27 +562,13 @@
             }
         }
 
-        // មុខងារសាកល្បងចុចផ្ញើកូដ OTP ទៅ Gmail
-        function sendOTP() {
-            const email = document.getElementById('signup-email').value;
-            if(email === "") {
-                alert("សូមបញ្ចូល Gmail របស់អ្នកជាមុនសិន!");
-            } else {
-                alert("ប្រព័ន្ធបានផ្ញើកូដ OTP ៦ ខ្ទង់ទៅកាន់ Gmail: " + email + " រួចរាល់ហើយ! សូមពិនិត្យមើលប្រអប់សាររបស់អ្នក។");
-            }
-        }
-
-        // មុខងារសម្រាប់ចុចដូរផ្ទាំង Tab នៅលើ Dashboard ខាងក្នុង
         function switchTab(tabId) {
-            // លាក់ផ្ទាំង Content ទាំងអស់
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
             
-            // ដក Active ចេញពីគ្រប់ប៊ូតុងនៅលើរបារចំហៀង Sidebar
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
             
-            // បង្ហាញផ្ទាំងមាតិកាដែលបានជ្រើសរើស និងថែម Active លើ Menu នោះ
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
