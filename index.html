@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យឌីជីថល - ភូមិភាគស្ទឹងត្រែង</title>
-    <!-- Google Fonts សម្រាប់អក្សរខ្មែរស្អាតៗ -->
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&family=Moul&display=swap" rel="stylesheet">
     
     <style>
@@ -261,14 +260,11 @@
 </head>
 <body>
 
-    <!-- ========================================== -->
-    <!-- ផ្នែកទម្រង់ចុះឈ្មោះ (SIGN UP PAGE) -->
-    <!-- ========================================== -->
     <div id="signup-page" class="auth-container">
         <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">មជ្ឈមណ្ឌលគរុកោសល្យភូមិភាគឦសានខេត្តស្ទឹងត្រែង</h2>
         <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចុះឈ្មោះបង្កើតគណនីថ្មី</h3>
         
-        <form onsubmit="event.preventDefault(); alert('ចុះឈ្មោះបានជោគជ័យ!'); showPage('login-page');">
+        <form onsubmit="event.preventDefault(); handleSignUp();">
             <div class="form-row">
                 <div class="form-group">
                     <label class="required">នាមត្រកូល</label>
@@ -282,7 +278,7 @@
 
             <div class="form-group">
                 <label class="required">តួនាទីរបស់អ្នក</label>
-                <select id="role-select" onchange="toggleLibrarianOptions()" required>
+                <select id="role-select" onchange="handleRoleChange()" required>
                     <option value="">--សូមជ្រើសរើសតួនាទី--</option>
                     <option value="director">គ្រូនាយក</option>
                     <option value="lecturer">គ្រូឧទ្ទេស</option>
@@ -291,7 +287,11 @@
                 </select>
             </div>
 
-            <!-- លក្ខខណ្ឌបន្ថែម៖ ជ្រើសរើសតែពេលយកតួនាទីជាបណ្ណារក្ស -->
+            <div class="form-group" id="generation-option" style="display: none; background: #E0F2FE; padding: 12px; border-radius: 6px; border-left: 4px solid var(--primary-color);">
+                <label class="required" style="color: var(--secondary-color);">គរុសិស្សជំនាន់ទី</label>
+                <input type="number" id="trainee-gen" placeholder="ឧ. ៤០">
+            </div>
+
             <div class="form-group" id="librarian-options" style="display: none; background: #FFF3E0; padding: 10px; border-radius: 6px;">
                 <label class="required" style="color: var(--accent-color);">ប្រភេទបណ្ណារក្ស (ត្រូវការការអនុញ្ញាតពី Admin)</label>
                 <select id="lib-type">
@@ -311,7 +311,6 @@
                 </div>
             </div>
 
-            <!-- បានកែប្រែ៖ ដាក់ទម្រង់បំពេញ Gmail ធម្មតា (មិនមានប្រព័ន្ធ OTP ទេ) -->
             <div class="form-group">
                 <label>Gmail (មិនបង្ខំ)</label>
                 <input type="email" placeholder="example@gmail.com">
@@ -337,9 +336,6 @@
     </div>
 
 
-    <!-- ========================================== -->
-    <!-- ផ្នែកទម្រង់ចូលប្រើប្រាស់ (LOGIN PAGE) -->
-    <!-- ========================================== -->
     <div id="login-page" class="auth-container" style="display: none;">
         <h2 class="moul-text" style="font-size: 18px; margin-bottom: 5px;">បណ្ណាល័យឌីជីថលភូមិភាគស្ទឹងត្រែង</h2>
         <h3 style="text-align:center; margin-bottom: 20px; font-size: 16px;">ចូលប្រើប្រាស់ប្រព័ន្ធ</h3>
@@ -364,9 +360,6 @@
     </div>
 
 
-    <!-- ========================================== -->
-    <!-- ផ្នែកផ្ទាំងគ្រប់គ្រងចម្បង (DASHBOARD PAGE) -->
-    <!-- ========================================== -->
     <div id="dashboard-page">
         <header>
             <div style="font-weight: bold; font-size: 16px;">Digital Library RTTC Stung Treng</div>
@@ -377,7 +370,6 @@
         </header>
 
         <div class="main-box">
-            <!-- របារចំហៀងសម្រាប់ចុចដូរផ្ទាំងមាតិកា -->
             <nav>
                 <ul>
                     <li class="nav-item active" onclick="switchTab('profile')">👤 ព័ត៌មានផ្ទាល់ខ្លួន</li>
@@ -389,10 +381,8 @@
                 </ul>
             </nav>
 
-            <!-- តំបន់បង្ហាញផ្ទាំងមាតិកាទៅតាមការចុច -->
             <div class="content">
                 
-                <!-- ១. ផ្ទាំងព័ត៌មានផ្ទាល់ខ្លួន -->
                 <div id="profile" class="tab-content active">
                     <h2>ព័ត៌មានផ្ទាល់ខ្លួន</h2>
                     <hr style="margin: 15px 0;">
@@ -402,7 +392,6 @@
                     <p><strong>Gmail៖</strong> sokdara.rttc@gmail.com</p>
                 </div>
 
-                <!-- ២. ផ្ទាំងកម្រងស្នាដៃស្រាវជ្រាវ -->
                 <div id="research-gallery" class="tab-content">
                     <h2>កម្រងស្នាដៃស្រាវជ្រាវ</h2>
                     <p style="color: #64748B; margin-bottom: 15px;">(សិទ្ធិបញ្ចូល៖ គ្រូបណ្ណារក្ស និងនាយក | សិទ្ធិមើល៖ គ្រូឧទ្ទេស និងគរុសិស្ស)</p>
@@ -419,7 +408,6 @@
                     </div>
                 </div>
 
-                <!-- ៣. ផ្ទាំងឯកសារសិក្សាស្រាវជ្រាវ (វិធីសាស្ត្របង្រៀន) -->
                 <div id="study-docs" class="tab-content">
                     <h2>ឯកសារសិក្សាស្រាវជ្រាវ</h2>
                     <p style="margin-bottom: 15px;">សូមជ្រើសរើសប្រភេទឯកសារ ឬវិធីសាស្ត្របង្រៀន៖</p>
@@ -445,7 +433,6 @@
                     <button class="btn-add">+ បញ្ចូលឯកសារថ្មី (PDF & Cover)</button>
                 </div>
 
-                <!-- ៤. ផ្ទាំងបញ្ជីខ្ចី-សងសៀវភៅ -->
                 <div id="borrow-list" class="tab-content">
                     <h2>បញ្ជីខ្ចី-សងសៀវភៅ</h2>
                     <p style="color: #64748B; margin-bottom: 10px;">(គ្រូបណ្ណារក្សមើលឃើញទាំងអស់ និងបញ្ចូលបាន | គ្រូឧទ្ទេស/គរុសិស្សមើលឃើញតែរបស់ខ្លួន)</p>
@@ -488,36 +475,25 @@
                     </table>
                 </div>
 
-                <!-- ៥. ផ្ទាំងចំនួនអ្នកប្រើប្រាស់ -->
                 <div id="users-count" class="tab-content">
                     <h2>ចំនួនអ្នកប្រើប្រាស់ក្នុងប្រព័ន្ធ</h2>
-                    <p>ទិន្នន័យសរុបគិតត្រឹមពេលបច្ចុប្បន្ន៖</p>
-                    <div class="grid-container" style="margin-top:15px;">
-                        <div class="book-card" style="padding: 20px; background: #EFF6FF;">
-                            <h3>គរុសិស្ស</h3>
-                            <h2 style="font-size: 32px; color: var(--primary-color);">១២០ នាក់</h2>
+                    <p style="color: #64748B; margin-bottom: 15px;">ទិន្នន័យសរុបគិតត្រឹមពេលបច្ចុប្បន្ន៖</p>
+                    <div class="grid-container">
+                        <div class="book-card" style="padding: 20px; background: #EFF6FF; border: 1px solid #BFDBFE;">
+                            <h3 style="color: var(--primary-color);">គរុសិស្ស</h3>
+                            <h2 id="trainee-count" style="font-size: 32px; color: var(--primary-color); margin-top: 10px;">១២០ នាក់</h2>
                         </div>
-                        <div class="book-card" style="padding: 20px; background: #ECFDF5;">
-                            <h3>គ្រូឧទ្ទេស</h3>
-                            <h2 style="font-size: 32px; color: #10B981;">២៥ នាក់</h2>
+                        <div class="book-card" style="padding: 20px; background: #ECFDF5; border: 1px solid #A7F3D0;">
+                            <h3 style="color: #10B981;">គ្រូឧទ្ទេស</h3>
+                            <h2 id="lecturer-count" style="font-size: 32px; color: #10B981; margin-top: 10px;">២៥ នាក់</h2>
                         </div>
                     </div>
                 </div>
 
-                <!-- ៦. ផ្ទាំងវីដេអូស្រាវជ្រាវ -->
                 <div id="videos" class="tab-content">
                     <h2>វីដេអូស្រាវជ្រាវគរុកោសល្យ</h2>
                     <p style="color: #64748B; margin-bottom: 15px;">(គ្រូនាយក គ្រូឧទ្ទេស និងបណ្ណារក្សអាចបញ្ចូលនិងមើល | គរុសិស្សបានតែមើល)</p>
                     <button class="btn-add">+ បង្ហោះវីដេអូថ្មី</button>
-
-                    <div style="background: #F8FAFC; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px dashed #CBD5E1;">
-                        <h4 style="margin-bottom: 10px;">ទម្រង់បង្ហោះវីដេអូគំរូ</h4>
-                        <div class="form-row">
-                            <div class="form-group"><input type="text" placeholder="ប្រធានបទវីដេអូ"></div>
-                            <div class="form-group"><input type="text" placeholder="ឈ្មោះគ្រូឧទ្ទេស"></div>
-                            <div class="form-group"><input type="text" placeholder="ឯកទេស"></div>
-                        </div>
-                    </div>
 
                     <div class="grid-container">
                         <div class="book-card">
@@ -535,10 +511,64 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- ផ្នែកបញ្ជាគំនិត JavaScript (LOGIC HANDLER) -->
-    <!-- ========================================== -->
     <script>
+        // បង្កើតអថេរទុកចំនួនអ្នកប្រើប្រាស់ដើម
+        let traineeTotal = 120;
+        let lecturerTotal = 25;
+
+        // មុខងារបំប្លែងលេខធម្មតា (123) ទៅជាអក្សរលេខខ្មែរ (១២៣)
+        function toKhmerNumber(num) {
+            const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+            return num.toString().split('').map(digit => khmerDigits[digit] || digit).join('');
+        }
+
+        // មុខងារគ្រប់គ្រងការផ្លាស់ប្តូរតួនាទី (បង្ហាញ/លាក់ ប្រអប់បំពេញទៅតាមតួនាទី)
+        function handleRoleChange() {
+            const roleSelect = document.getElementById('role-select').value;
+            const genOption = document.getElementById('generation-option');
+            const libOptions = document.getElementById('librarian-options');
+            const traineeGenInput = document.getElementById('trainee-gen');
+
+            // លក្ខខណ្ឌសម្រាប់គរុសិស្ស (លោតប្រអប់ជំនាន់ទី...)
+            if (roleSelect === 'trainee') {
+                genOption.style.display = 'block';
+                traineeGenInput.required = true; // បង្ខំឱ្យបំពេញ
+            } else {
+                genOption.style.display = 'none';
+                traineeGenInput.required = false;
+                traineeGenInput.value = ''; // សម្អាតតម្លៃចោលបើដូរតួនាទីចេញ
+            }
+
+            // លក្ខខណ្ឌសម្រាប់បណ្ណារក្ស
+            if (roleSelect === 'librarian') {
+                libOptions.style.display = 'block';
+            } else {
+                libOptions.style.display = 'none';
+            }
+        }
+
+        // មុខងារគ្រប់គ្រងការចុះឈ្មោះ និងកើនចំនួនលេខភ្លាមៗ
+        function handleSignUp() {
+            const roleSelect = document.getElementById('role-select').value;
+            const genValue = document.getElementById('trainee-gen').value;
+            
+            if (roleSelect === 'trainee') {
+                traineeTotal += 1; // កើនចំនួនគរុសិស្ស
+                document.getElementById('trainee-count').innerText = toKhmerNumber(traineeTotal) + " នាក់";
+                alert('ចុះឈ្មោះជា "គរុសិស្ស ជំនាន់ទី ' + toKhmerNumber(genValue) + '" បានជោគជ័យ! ទិន្នន័យត្រូវបានបច្ចុប្បន្នភាព។');
+            } else if (roleSelect === 'lecturer') {
+                lecturerTotal += 1; // កើនចំនួនគ្រូឧទ្ទេស
+                document.getElementById('lecturer-count').innerText = toKhmerNumber(lecturerTotal) + " នាក់";
+                alert('ចុះឈ្មោះជា "គ្រូឧទ្ទេស" បានជោគជ័យ! ទិន្នន័យត្រូវបានបច្ចុប្បន្នភាព។');
+            } else {
+                alert('ចុះឈ្មោះបានជោគជ័យ!');
+            }
+
+            // ត្រឡប់ទៅផ្ទាំង Login វិញក្រោយចុះឈ្មោះរួច
+            showPage('login-page');
+        }
+
+        // មុខងារសម្រាប់ប្តូរទំព័រធំៗ (Sign Up, Login, Dashboard)
         function showPage(pageId) {
             document.getElementById('signup-page').style.display = 'none';
             document.getElementById('login-page').style.display = 'none';
@@ -551,17 +581,7 @@
             }
         }
 
-        function toggleLibrarianOptions() {
-            const roleSelect = document.getElementById('role-select');
-            const libOptions = document.getElementById('librarian-options');
-            
-            if (roleSelect.value === 'librarian') {
-                libOptions.style.display = 'block';
-            } else {
-                libOptions.style.display = 'none';
-            }
-        }
-
+        // មុខងារសម្រាប់ចុចដូរផ្ទាំងមាតិកា (Tabs) លើ Dashboard
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
